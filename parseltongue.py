@@ -31,7 +31,7 @@ from pprint import pprint
 # adspath is required and must appear at the end of the list
 COMPUTER_ATTRIBS = ['dnshostname', 'operatingsystem', 'operatingsystemversion', 'operatingsystemservicepack', 'lastlogon', 'lastlogontimestamp', 'useraccountcontrol', 'description', 'memberof', 'primarygroupid', 'location', 'objectsid', 'adspath']
 
-USER_ATTRIBS = ['samaccountname', 'name', 'userprinciplename', 'lastlogon', 'lastlogontimestamp', 'pwdlastset', 'admincount', 'useraccountcontrol', 'memberof', 'description', 'objectsid', 'primarygroupid', 'adspath']
+USER_ATTRIBS = ['samaccountname', 'name', 'userprinciplename', 'lastlogon', 'lastlogontimestamp', 'pwdlastset', 'useraccountcontrol', 'memberof', 'description', 'objectsid', 'primarygroupid', 'adspath']
 
 GROUP_ATTRIBS = ['samaccountname', 'name', 'userprinciplename', 'objectsid', 'primarygroupid', 'description', 'memberof', 'adspath']
 
@@ -737,16 +737,16 @@ def main():
     {0} -s
       - Displays dsquery commands to run to generate expected output
     
-    {0} -o <output directory> -n <nt_domain> -d <path to dnscmd /zoneprint output>
+    {0} --output <output directory> -n <nt_domain> -d <path to dnscmd /zoneprint output>
       - Generates a list of hostname / IP / CNAME mappings from dnscmd /zoneprint output
       
-    {0} -o <output directory> -n <nt_domain> --hashdump <hashdump>
+    {0} --output <output directory> -n <nt_domain> --hashdump <hashdump>
       - Generates a list of hostname / IP / CNAME mappings from dnscmd /zoneprint output
     
-    {0} -o <output directory> -n <nt_domain> -c <path to computers dsquery> [-d <path to dnscmd /zoneprint output>]
+    {0} --output <output directory> -n <nt_domain> -c <path to computers dsquery> [-d <path to dnscmd /zoneprint output>]
       - Generates a table containing computer objects, optionally include IPs parsed from a dnscmd /zoneprint file
     
-    {0} -o <output directory> -n <nt_domain> -u <path to users dsquery>
+    {0} --output <output directory> -n <nt_domain> -u <path to users dsquery>
       - Generates a CSV file containing user objects, optionally include passwords and hashes if applicable files are included
     """.format(sys.argv[0], DSQUERY_COMPUTERS, DSQUERY_USERS, DSQUERY_GROUPS, DSQUERY_OUS, DSQUERY_GPOS))
     sys.exit(0)

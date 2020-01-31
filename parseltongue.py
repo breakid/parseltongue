@@ -39,6 +39,7 @@ OU_ATTRIBS = ['name', 'managedby', 'description', 'gplink', 'adspath']
 
 GPO_ATTRIBS = ['displayname', 'name', 'adspath']
 
+MULTI_OBJECT_DELIMITER = '\n'
 
 
 #==============================================================================
@@ -125,7 +126,7 @@ def convert_uac(uac):
     if int(uac) ^ int(flag, 16) == 0:
       flags.append(UAC_FLAGS[flag])
   
-  return '\n'.join(sorted(flags))
+  return MULTI_OBJECT_DELIMITER.join(sorted(flags))
 
 
 
@@ -224,13 +225,14 @@ def enhance_object(obj, creds=None, dns_data=None, gpo_data=None):
     
     if hostname in dns_data and 'ip' in dns_data[hostname]:
       # Account for multiple IP addresses per host
-      obj['ip'] = '\n'.join(set(dns_data[hostname]['ip']))
+      obj['ip'] = MULTI_OBJECT_DELIMITER.join(set(dns_data[hostname]['ip']))
     else:
       # Set a default so CSV writer doesn't get angry if its 
       obj['ip'] = ''
   
-  # Replace values in gplink with 
-  if gpo_data is not None and 'gplink' in obj.keys():
+  # Replace values in gplink with
+  if gpo_data is not None and bool(gpo_data) and 'gplink' in obj.keys():
+    print("GPOs detected")
     gpos = []
     gpo_names = GPO_NAME_PATT.findall(obj['gplink'])
     
@@ -241,9 +243,9 @@ def enhance_object(obj, creds=None, dns_data=None, gpo_data=None):
         # All GPOs should be found, but just in case, it's good to know if data is missing
         gpos.append(name)
     
-    obj['gpos'] = '\n'.join(gpos)
+    obj['gpos'] = MULTI_OBJECT_DELIMITER.join(gpos)
     del obj['gplink']
-      
+  
   return obj
 
 
@@ -399,13 +401,13 @@ def parse_dnscmd(filepath):
     
     # Add other fields (if applicable), use set() to ensure only unique values
     if 'ip' in hostname_map[name]:
-      obj['ip'] = '\n'.join(set(hostname_map[name]['ip']))
+      obj['ip'] = MULTI_OBJECT_DELIMITER.join(set(hostname_map[name]['ip']))
     
     if 'fqdn' in hostname_map[name]:
-      obj['fqdn'] = '\n'.join(set(hostname_map[name]['fqdn']))
+      obj['fqdn'] = MULTI_OBJECT_DELIMITER.join(set(hostname_map[name]['fqdn']))
     
     if 'cname' in hostname_map[name]:
-      obj['cname'] = '\n'.join(set(hostname_map[name]['cname']))
+      obj['cname'] = MULTI_OBJECT_DELIMITER.join(set(hostname_map[name]['cname']))
     
     objects.append(obj)
     
@@ -646,7 +648,7 @@ def parse_objects(filepath, fieldnames, creds = None, dns_data = None, gpo_data=
         if key in fieldnames:
           # Gracefully handle multiples of the same key
           if key in obj.keys():
-            obj[key] = obj[key] + '\n' + value
+            obj[key] = obj[key] + MULTI_OBJECT_DELIMITER + value
           else:
             obj[key] = value
           
@@ -662,6 +664,8 @@ def parse_objects(filepath, fieldnames, creds = None, dns_data = None, gpo_data=
 
 
 def main():
+  global MULTI_OBJECT_DELIMITER
+  
   parser = OptionParser()
   parser.add_option("-c", "--computers", dest="computer", help="Dsquery for computers")
   parser.add_option("-d", "--dns", dest="dns", help="Output from dnscmd /zoneprint")
@@ -670,6 +674,7 @@ def main():
   parser.add_option("-g", "--groups", dest="group", help="Dsquery for groups")
   parser.add_option("--gpos", dest="gpo", help="Dsquery for GPOs")
   parser.add_option("--hashdump", dest="hashdump", help="Hashdump (pwdump format)")
+  parser.add_option("-k", "--kibana", dest="kibana_delimiter", help="A delimiter to use between values of duplicate keys for applications (such as Kibana) that don't handle multiple lines well")
   parser.add_option("-l", "--logonpasswords", dest="logonpasswords", help="Mimikatz logonpasswords")
   parser.add_option("-m", "--lsadump", dest="lsadump", help="Mimikatz lsadump")
   parser.add_option("-n", "--ntdomain", dest="nt_domain", help="NT domain")
@@ -701,6 +706,8 @@ def main():
       --gpos <GPO dsquery>
       
       --hashdump <hashdump>
+      
+      -k <multiple key delimiter>
       
       -l <file containing one or more logonpasswords>
       
@@ -746,8 +753,11 @@ def main():
     {0} --output <output directory> -n <nt_domain> -c <path to computers dsquery> [-d <path to dnscmd /zoneprint output>]
       - Generates a table containing computer objects, optionally include IPs parsed from a dnscmd /zoneprint file
     
-    {0} --output <output directory> -n <nt_domain> -u <path to users dsquery>
-      - Generates a CSV file containing user objects, optionally include passwords and hashes if applicable files are included
+    {0} --output <output directory> -n <nt_domain> -u <path to users dsquery> -m <mimikatz lsadump output>
+      - Generates a CSV file containing user objects enhanced with password hashes parsed from the Mimikatz lsadump
+      
+    {0} --output <output directory> -n <nt_domain> -u <path to users dsquery> -k '|'
+      - Generates a CSV file containing user objects with a '|' character separating the values of duplicate keys (such as memberOf)
     """.format(sys.argv[0], DSQUERY_COMPUTERS, DSQUERY_USERS, DSQUERY_GROUPS, DSQUERY_OUS, DSQUERY_GPOS))
     sys.exit(0)
   elif options.output_path is None:
@@ -756,7 +766,10 @@ def main():
   elif options.nt_domain is None:
     print('[-] ERROR: No NT domain specified')
     sys.exit(1)
-
+  
+  if options.kibana_delimiter is not None:
+    MULTI_OBJECT_DELIMITER = options.kibana_delimiter
+  
   objects = None
   dns_data = None
   gpo_data = None

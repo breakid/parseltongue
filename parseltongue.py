@@ -31,15 +31,17 @@ from pprint import pprint
 # adspath is required and must appear at the end of the list
 COMPUTER_ATTRIBS = ['dnshostname', 'operatingsystem', 'operatingsystemversion', 'operatingsystemservicepack', 'lastlogon', 'lastlogontimestamp', 'useraccountcontrol', 'description', 'memberof', 'primarygroupid', 'location', 'objectsid', 'adspath']
 
-USER_ATTRIBS = ['samaccountname', 'name', 'userprinciplename', 'lastlogon', 'lastlogontimestamp', 'pwdlastset', 'useraccountcontrol', 'memberof', 'description', 'objectsid', 'primarygroupid', 'adspath']
+USER_ATTRIBS = ['samaccountname', 'name', 'distinguishedname', 'lastlogon', 'lastlogontimestamp', 'pwdlastset', 'useraccountcontrol', 'memberof', 'description', 'objectsid', 'primarygroupid', 'adspath']
 
-GROUP_ATTRIBS = ['samaccountname', 'name', 'userprinciplename', 'objectsid', 'primarygroupid', 'description', 'memberof', 'adspath']
+GROUP_ATTRIBS = ['samaccountname', 'name', 'distinguishedname', 'objectsid', 'primarygroupid', 'description', 'memberof', 'adspath']
 
 OU_ATTRIBS = ['name', 'managedby', 'description', 'gplink', 'adspath']
 
 GPO_ATTRIBS = ['displayname', 'name', 'adspath']
 
 MULTI_OBJECT_DELIMITER = '\n'
+
+NT_DOMAIN = ''
 
 
 #==============================================================================
@@ -81,49 +83,37 @@ def convert_uac(uac):
   if uac.strip() == '':
     return ''
   
-  # Source: https://jackstromberg.com/2013/01/useraccountcontrol-attributeflag-values/
+  # Source: https://support.microsoft.com/en-us/help/305144/how-to-use-useraccountcontrol-to-manipulate-user-account-properties
   UAC_FLAGS = {
-    '0x0001': "SCRIPT",
-    '0x0002': "ACCOUNTDISABLE",
-    '0x0008': "HOMEDIR_REQUIRED",
-    '0x0010': "LOCKOUT",
-    '0x0020': "PASSWD_NOTREQD",
-    '0x0040': "PASSWD_CANT_CHANGE",
-    '0x0080': "ENCRYPTED_TEXT_PWD_ALLOWED",
-    '0x0100': "TEMP_DUPLICATE_ACCOUNT",
-    '0x0200': "NORMAL_ACCOUNT",
-    '0x0202': "Disabled Account",
-    '0x0220': "Enabled, Password Not Required",
-    '0x0222': "Disabled, Password Not Required",
-    '0x0800': "INTERDOMAIN_TRUST_ACCOUNT",
-    '0x1000': "WORKSTATION_TRUST_ACCOUNT",
-    '0x2000': "SERVER_TRUST_ACCOUNT",
-    '0x10000': "DONT_EXPIRE_PASSWORD",
-    '0x10200': "Enabled, Password Doesn't Expire",
-    '0x10202': "Disabled, Password Doesn't Expire",
-    '0x10222': "Disabled, Password Doesn't Expire & Not Required",
-    '0x20000': "MNS_LOGON_ACCOUNT",
-    '0x40000': "SMARTCARD_REQUIRED",
-    '0x40200': "Enabled, Smartcard Required",
-    '0x40202': "Disabled, Smartcard Required",
-    '0x40222': "Disabled, Smartcard Required, Password Not Required",
-    '0x50202': "Disabled, Smartcard Required, Password Doesn't Expire",
-    '0x50222': "Disabled, Smartcard Required, Password Doesn't Expire & Not Required",
-    '0x80000': "TRUSTED_FOR_DELEGATION",
-    '0x82000': "Domain controller",
-    '0x100000': "NOT_DELEGATED",
-    '0x200000': "USE_DES_KEY_ONLY",
-    '0x400000': "DONT_REQ_PREAUTH",
-    '0x800000': "PASSWORD_EXPIRED",
-    '0x1000000': "TRUSTED_TO_AUTH_FOR_DELEGATION",
-    '0x04000000': "PARTIAL_SECRETS_ACCOUNT"
+    '0x0001': "Script",
+    '0x0002': "Account Disabled",
+    '0x0008': "Homedir Required",
+    '0x0010': "Lockout",
+    '0x0020': "Password Not Required",
+    '0x0040': "Password Can't Change",
+    '0x0080': "Encrypted Text Password Allowed",
+    '0x0100': "Temp Duplicate Account",
+    '0x0200': "Normal Account",
+    '0x0800': "Interdomain Trust Account",
+    '0x1000': "Workstation Trust Account",
+    '0x2000': "Server Trust Account",
+    '0x10000': "Password Doesn't Expire",
+    '0x20000': "MNS Logon Account",
+    '0x40000': "Smartcard Required",
+    '0x80000': "Trusted For Delegation",
+    '0x100000': "Not Delegated",
+    '0x200000': "Use DES Key Only",
+    '0x400000': "Don't Require PreAuth",
+    '0x800000': "Password Expired",
+    '0x1000000': "Trusted to auth for delegation",
+    '0x04000000': "Partial Secrets Account"
   }
   
   flags = []
   
   for flag in UAC_FLAGS:
     # Perform a bitwise XOR to determine if the flag is part of the UAC value
-    if int(uac) ^ int(flag, 16) == 0:
+    if int(uac) & int(flag, 16) == int(flag, 16):
       flags.append(UAC_FLAGS[flag])
   
   return MULTI_OBJECT_DELIMITER.join(sorted(flags))
@@ -232,7 +222,6 @@ def enhance_object(obj, creds=None, dns_data=None, gpo_data=None):
   
   # Replace values in gplink with
   if gpo_data is not None and bool(gpo_data) and 'gplink' in obj.keys():
-    print("GPOs detected")
     gpos = []
     gpo_names = GPO_NAME_PATT.findall(obj['gplink'])
     
@@ -290,7 +279,7 @@ def write_output(output_prefix, data_type, objects, fieldnames = ['username', 'p
     
     try:
       with open(output_filepath, 'wb') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer = csv.DictWriter(csvfile, fieldnames=['nt_domain'] + fieldnames)
         writer.writeheader()
         writer.writerows(objects)
       
@@ -396,6 +385,7 @@ def parse_dnscmd(filepath):
   # Populate objects in case no other options were specified
   for name in hostname_map.keys():
     obj = {
+      'nt_domain': NT_DOMAIN,
       'hostname': name
     }
     
@@ -438,7 +428,7 @@ def parse_hashdump(filepath):
       if ':' in line:
         (username, rid, lm_hash, nt_hash) = line.split(':')[:4]
         ntlm = nt_hash.upper()
-        user_hash_map[username] = {'username': username, 'ntlm': ntlm}
+        user_hash_map[username] = {'nt_domain': NT_DOMAIN, 'username': username, 'ntlm': ntlm}
   
   return user_hash_map
 
@@ -464,7 +454,7 @@ def parse_lsadump(filepath):
         username = KV_PATT.search(line).groupdict()['value']
       elif 'NTLM : ' in line:
         ntlm = KV_PATT.search(line).groupdict()['value'].upper()
-        user_hash_map[username] = {'username': username, 'ntlm': ntlm}
+        user_hash_map[username] = {'nt_domain': NT_DOMAIN, 'username': username, 'ntlm': ntlm}
         username = ''
   
   return user_hash_map
@@ -499,13 +489,13 @@ def parse_export(filepath, domain):
         data = data.groupdict()
         realm = data['realm']
         username = data['username']
-        ntlm = data['ntlm']
+        ntlm = data['ntlm'].upper()
         
         if realm == domain:
           if username in user_hash_map:
             user_hash_map[username]['ntlm'] = ntlm
           else:
-            user_hash_map[username] = {'username': username, 'ntlm': ntlm}
+            user_hash_map[username] = {'nt_domain': NT_DOMAIN, 'username': username, 'ntlm': ntlm}
       else:
         data = PLAIN_PATT.search(line)
       
@@ -519,7 +509,7 @@ def parse_export(filepath, domain):
             if username in user_hash_map:
               user_hash_map[username]['plaintext'] = plaintext
             else:
-              user_hash_map[username] = {'username': username, 'plaintext': plaintext}
+              user_hash_map[username] = {'nt_domain': NT_DOMAIN, 'username': username, 'plaintext': plaintext}
   
   return user_hash_map
 
@@ -538,7 +528,7 @@ def parse_dcsync(filepath):
   log('[*] Parsing dcsync output from: %s' % filepath)
   
   user_hash_map = {}
-  obj = {}
+  obj = {'nt_domain': NT_DOMAIN}
 
   with open(filepath, 'r') as lsadump:
     for line in lsadump.readlines():
@@ -555,7 +545,7 @@ def parse_dcsync(filepath):
             obj['aes128'] = KV_PATT.search(line).groupdict()['value'].upper()
             user_hash_map[obj['username']] = obj
             # Entry is finish, reset object; require username to get reset before parsing more hashes so that aes256_hmac and aes128_hmac don't get overwritte by old credentials
-            obj = {}
+            obj = {'nt_domain': NT_DOMAIN}
 
   return user_hash_map
 
@@ -573,7 +563,7 @@ def parse_logonpasswords(filepath):
   log('[*] Parsing logonpasswords output from: %s' % filepath)
   
   user_hash_map = {}
-  obj = {}
+  obj = {'nt_domain': NT_DOMAIN}
 
   with open(filepath, 'r') as lsadump:
     for line in lsadump.readlines():
@@ -585,26 +575,27 @@ def parse_logonpasswords(filepath):
         
           # Initialize NTLM so password cracker output doesn't get angry
           obj['ntlm'] = ''
+      elif 'username' in obj:
+        # If there was no valid username for the block, ignore everything else
+        if 'NTLM     : ' in line:
+          obj['ntlm'] = KV_PATT.search(line).groupdict()['value'].upper()
+        elif 'Password : ' in line and not obj['username'].endswith('$'):
+          # Save plaintext password if it's not null or for a computer account (< 128)
+          # Use regex to make sure we get the entire password, even if it ends with a space
+          password = KV_PATT.search(line).groupdict()['value']
           
-      elif obj and 'NTLM     : ' in line:
-        obj['ntlm'] = KV_PATT.search(line).groupdict()['value'].upper()
-      elif obj and 'Password : ' in line and not obj['username'].endswith('$'):
-        # Save plaintext password if it's not null or for a computer account (< 128)
-        # Use regex to make sure we get the entire password, even if it ends with a space
-        password = KV_PATT.search(line).groupdict()['value']
-        
-        if password != '(null)' and len(password) < 128:
-          obj['plaintext'] = password
-      elif obj and 'credman :' in line:
-        # Last line of the entry, save the current object to the dictionary if the hash was populated, and reset the object for the next entry
-        if obj['ntlm'] != '':
-          # Warn user if a duplicate is detected; since the data is saved to a hash, a duplicate will overwrite the original
-          if obj['username'] in user_hash_map:
-            log('\n[*] IMPORTANT: Duplicate username (%s) detected in logonpasswords; manually verify which hash is accurate\n' % obj['username'])
-        
-          user_hash_map[obj['username']] = obj
+          if password != '(null)' and len(password) < 128:
+            obj['plaintext'] = password
+        elif 'credman :' in line:
+          # Last line of the entry, save the current object to the dictionary if the hash was populated, and reset the object for the next entry
+          if obj['ntlm'] != '':
+            # Warn user if a duplicate is detected; since the data is saved to a hash, a duplicate will overwrite the original
+            if obj['username'] in user_hash_map:
+              log('\n[*] IMPORTANT: Duplicate username (%s) detected in logonpasswords; manually verify which hash is accurate\n' % obj['username'])
           
-        obj = {}
+            user_hash_map[obj['username']] = obj
+            
+          obj = {'nt_domain': NT_DOMAIN}
   
   return user_hash_map
 
@@ -628,7 +619,7 @@ def parse_objects(filepath, fieldnames, creds = None, dns_data = None, gpo_data=
   log('[*] Parsing dsquery output from: %s' % filepath)
   
   objects = []
-  obj = {}
+  obj = {'nt_domain': NT_DOMAIN}
   
   with open(filepath, 'r') as dsquery_file:
     data = dsquery_file.read()
@@ -657,7 +648,7 @@ def parse_objects(filepath, fieldnames, creds = None, dns_data = None, gpo_data=
           if key == fieldnames[-1]:
             obj = enhance_object(obj, creds, dns_data, gpo_data)
             objects.append(obj)
-            obj = {}
+            obj = {'nt_domain': NT_DOMAIN}
   
   return objects
 
@@ -665,6 +656,7 @@ def parse_objects(filepath, fieldnames, creds = None, dns_data = None, gpo_data=
 
 def main():
   global MULTI_OBJECT_DELIMITER
+  global NT_DOMAIN
   
   parser = OptionParser()
   parser.add_option("-c", "--computers", dest="computer", help="Dsquery for computers")
@@ -766,6 +758,8 @@ def main():
   elif options.nt_domain is None:
     print('[-] ERROR: No NT domain specified')
     sys.exit(1)
+  
+  NT_DOMAIN = options.nt_domain
   
   if options.kibana_delimiter is not None:
     MULTI_OBJECT_DELIMITER = options.kibana_delimiter

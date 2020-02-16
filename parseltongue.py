@@ -180,7 +180,9 @@ def enhance_object(obj, creds=None, dns_data=None, gpo_data=None):
   
   if name == '':
     log('[-] ERROR: Object contains no name field')
-    #pprint(obj)
+  
+  # Standardize capitalization to ensure a proper look-up in the creds object
+  name = name.lower()
   
   # Add credential fields
   if creds is not None:
@@ -293,7 +295,7 @@ def write_output(output_prefix, data_type, objects, fieldnames = ['username', 'p
             writer.writerow({'username': obj['username'], 'ntlm': obj['ntlm']})
           
     except IOError as e:
-      raw_input('[-] Write failed; do you have the file open?')
+      raw_input('[-] Write failed; do you have the file open? ')
       write_output(output_prefix, data_type, objects, fieldnames)
   else:
     log('[*] No %s detected; skipping...' % data_type)
@@ -426,7 +428,7 @@ def parse_hashdump(filepath):
   with open(filepath, 'r') as hashdump:
     for line in hashdump.readlines():
       if ':' in line:
-        (username, rid, lm_hash, nt_hash) = line.split(':')[:4]
+        (username, rid, lm_hash, nt_hash) = line.split(':')[:4].lower()
         ntlm = nt_hash.upper()
         user_hash_map[username] = {'nt_domain': NT_DOMAIN, 'username': username, 'ntlm': ntlm}
   
@@ -451,7 +453,7 @@ def parse_lsadump(filepath):
   with open(filepath, 'r') as lsadump:
     for line in lsadump.readlines():
       if 'User : ' in line:
-        username = KV_PATT.search(line).groupdict()['value']
+        username = KV_PATT.search(line).groupdict()['value'].lower()
       elif 'NTLM : ' in line:
         ntlm = KV_PATT.search(line).groupdict()['value'].upper()
         user_hash_map[username] = {'nt_domain': NT_DOMAIN, 'username': username, 'ntlm': ntlm}
@@ -488,7 +490,7 @@ def parse_export(filepath, domain):
       if data is not None:
         data = data.groupdict()
         realm = data['realm']
-        username = data['username']
+        username = data['username'].lower()
         ntlm = data['ntlm'].upper()
         
         if realm == domain:
@@ -502,7 +504,7 @@ def parse_export(filepath, domain):
         if data is not None:
           data = data.groupdict()
           realm = data['realm']
-          username = data['username']
+          username = data['username'].lower()
           plaintext = data['plaintext']
           
           if realm == domain:
@@ -533,7 +535,7 @@ def parse_dcsync(filepath):
   with open(filepath, 'r') as lsadump:
     for line in lsadump.readlines():
       if 'SAM Username         : ' in line:
-        obj['username'] = KV_PATT.search(line).groupdict()['value']
+        obj['username'] = KV_PATT.search(line).groupdict()['value'].lower()
       else:
         # Ensure the username is set before parsing hashes (prevents entry getting overwritten with values from OldCredentials
         if 'username' in obj:
@@ -568,9 +570,9 @@ def parse_logonpasswords(filepath):
   with open(filepath, 'r') as lsadump:
     for line in lsadump.readlines():
       if 'User Name         : ' in line:
-        username = KV_PATT.search(line).groupdict()['value']
+        username = KV_PATT.search(line).groupdict()['value'].lower()
         
-        if username not in ['(null)', 'LOCAL SERVICE', 'DWM-1']:
+        if username not in ['(null)', 'local service', 'dwm-1']:
           obj['username'] = username
         
           # Initialize NTLM so password cracker output doesn't get angry

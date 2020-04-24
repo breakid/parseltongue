@@ -1,0 +1,250 @@
+name: Domain Controllers
+managedby: 
+description: Default container for domain controllers
+gplink: [LDAP://CN={6AC1786C-016F-11D2-945F-00C04fB984F9},CN=Policies,CN=System,DC=SGC,DC=HWS,DC=MIL;0]
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Domain Controllers,DC=SGC,DC=HWS,DC=MIL
+name: J1
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J1,DC=SGC,DC=HWS,DC=MIL
+name: J2
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: J3
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: J4
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J4,DC=SGC,DC=HWS,DC=MIL
+name: J5
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J5,DC=SGC,DC=HWS,DC=MIL
+name: J6
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J6,DC=SGC,DC=HWS,DC=MIL
+name: J7
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J7,DC=SGC,DC=HWS,DC=MIL
+name: J8
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J8,DC=SGC,DC=HWS,DC=MIL
+name: Security
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Security,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: R&D
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: Special Projects
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: X-301
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=X-301,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: F-302
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=F-302,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: BC-303
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=BC-303,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: BC-304
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: Daedalus
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Daedalus,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: Odyssey
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Odyssey,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: Korolev
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Korolev,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: Apollo
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Apollo,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: Sun Tzu
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Sun Tzu,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: George Hammond
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=George Hammond,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: Icarus
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+name: SGC Operations
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SGC Operations,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG Teams
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-1
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-2
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-3
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-4
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-5
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-6
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-7
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-8
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-9
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: SG-10
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+name: Maintenance
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Maintenance,OU=J4,DC=SGC,DC=HWS,DC=MIL
+name: Medical
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Medical,OU=J4,DC=SGC,DC=HWS,DC=MIL
+name: IT
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+name: Atlantis Expedition
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: J1
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J1,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: J2
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J2,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: J3
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J3,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: J4
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J4,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: J5
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J5,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: J6
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J6,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: J7
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=J7,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: Research
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Research,OU=J2,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: Atlantis Operations
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Atlantis Operations,OU=J3,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: Field Teams
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Field Teams,OU=J3,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL
+name: Medical
+managedby: 
+description: 
+gplink: 
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/OU=Medical,OU=J4,OU=Atlantis Expedition,DC=SGC,DC=HWS,DC=MIL

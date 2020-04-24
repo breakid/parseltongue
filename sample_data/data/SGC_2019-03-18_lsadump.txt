@@ -1,0 +1,836 @@
+Domain : SGC / S-1-5-21-60804857-299774370-1069655206
+
+RID  : 000001f4 (500)
+User : Administrator
+LM   : 
+NTLM : b1f01d13cdb6fcf1792153512dcc0084
+
+RID  : 000001f5 (501)
+User : Guest
+LM   : 
+NTLM : 
+
+RID  : 000001f6 (502)
+User : krbtgt
+LM   : 
+NTLM : 7f139b155ececc8ba6a948bd71a903b9
+
+RID  : 00000458 (1112)
+User : george.hammond
+LM   : 
+NTLM : 2bce5d45553403e01773fec76016cfa2
+
+RID  : 00000459 (1113)
+User : walter.harriman
+LM   : 
+NTLM : 01e8bc02a619b34d0dc1584f0364f3ce
+
+RID  : 0000045a (1114)
+User : jack.oneill
+LM   : 
+NTLM : ac3c8774306c5878a291e52ae9f00f7c
+
+RID  : 0000045b (1115)
+User : samantha.carter
+LM   : 
+NTLM : c4a3bb2148c42ffe9e6b6c12b29b4636
+
+RID  : 0000045c (1116)
+User : daniel.jackson
+LM   : 
+NTLM : 357a249859444bfd6865b1bd6018a694
+
+RID  : 0000045d (1117)
+User : tealc
+LM   : 
+NTLM : 119a5e4175434568982a5dc7908f8054
+
+RID  : 0000045e (1118)
+User : jonas.quinn
+LM   : 
+NTLM : 47d0141aa5e111b985a51202c63b092e
+
+RID  : 0000045f (1119)
+User : cameron.mitchell
+LM   : 
+NTLM : f94ea58bb5227e9210512a4521874d2a
+
+RID  : 00000460 (1120)
+User : vala.maldoran
+LM   : 
+NTLM : 6f8c3f4d3869a10f3b4f0522f537fd33
+
+RID  : 00000461 (1121)
+User : louis.ferretti
+LM   : 
+NTLM : e97759d9cc4a2637375de34d6fbb48d9
+
+RID  : 00000462 (1122)
+User : doug.penhall
+LM   : 
+NTLM : 9e31f79d8258d12cb2415c727bc33da9
+
+RID  : 00000463 (1123)
+User : peter.sands
+LM   : 
+NTLM : 87e882847279f061865e702a605cfc27
+
+RID  : 00000464 (1124)
+User : james.bell
+LM   : 
+NTLM : a4d80a23b5bf4f92306f837d18c69547
+
+RID  : 00000465 (1125)
+User : michael.griff
+LM   : 
+NTLM : f8bb973b8dfac2325bf364d11a11b7e3
+
+RID  : 00000466 (1126)
+User : charles.kawalsky
+LM   : 
+NTLM : ea0d0067de43b82a1b08e53f90c41912
+
+RID  : 00000467 (1127)
+User : carl.warren
+LM   : 
+NTLM : 60b3e188bdc34182fce955da707aa2f4
+
+RID  : 00000468 (1128)
+User : john.casey
+LM   : 
+NTLM : c92d8af34fb6e88fc6ceb91c6ccd6566
+
+RID  : 00000469 (1129)
+User : benjamin.pierce
+LM   : 
+NTLM : 012c9edfb06b543233745c9aff836490
+
+RID  : 0000046a (1130)
+User : michael.coburn
+LM   : 
+NTLM : c36cce51333d2143effa3ad9fdd1d332
+
+RID  : 0000046b (1131)
+User : robert.makepeace
+LM   : 
+NTLM : c406f725bd16ccf115f1a9c390f381f5
+
+RID  : 0000046c (1132)
+User : albert.reynolds
+LM   : 
+NTLM : e2bed549fadbfa81f5a2f5d88de2042d
+
+RID  : 0000046d (1133)
+User : alexander.baker
+LM   : 
+NTLM : 2f246d2e47fd509de7c5790823bb13fe
+
+RID  : 0000046e (1134)
+User : richard.bosco
+LM   : 
+NTLM : 265a13da21a27fa2c9d187e2613ac607
+
+RID  : 0000046f (1135)
+User : william.castleman
+LM   : 
+NTLM : d27b30f093c4243115fb7c14b814a870
+
+RID  : 00000470 (1136)
+User : kevin.phillips
+LM   : 
+NTLM : fe30cc9dd4ebccb3f7c09afc5b9103d7
+
+RID  : 00000471 (1137)
+User : robert.walters
+LM   : 
+NTLM : b5d7d1eac5f5779e502baf0f6336208b
+
+RID  : 00000472 (1138)
+User : christopher.wallace
+LM   : 
+NTLM : 105a6ea0f572c8c6f3481f638d45ddb3
+
+RID  : 00000473 (1139)
+User : roger.watts
+LM   : 
+NTLM : 9a1561a67102cd1c12a4d3bd88f24049
+
+RID  : 00000474 (1140)
+User : jonathan.reed
+LM   : 
+NTLM : a6a7498aae4c8ffcb3c363b28a4a2b8d
+
+RID  : 00000475 (1141)
+User : richard.heinig
+LM   : 
+NTLM : 816ad820e29a3133625277b1dd72fbb4
+
+RID  : 00000476 (1142)
+User : timothy.harper
+LM   : 
+NTLM : 002858e2b41e012c4f90f517234b7d49
+
+RID  : 00000477 (1143)
+User : jessica.altman
+LM   : 
+NTLM : a6d8e5627826a95c33a8a8abc2f85b43
+
+RID  : 00000478 (1144)
+User : steven.davis
+LM   : 
+NTLM : d546ed7ab8543151abe37f7efbb1902e
+
+RID  : 00000479 (1145)
+User : kirk.russell
+LM   : 
+NTLM : 11c32d960fc41a83115681e22f53804a
+
+RID  : 0000047a (1146)
+User : jason.barnes
+LM   : 
+NTLM : daab1bb38ab1409b43d251d8054687ff
+
+RID  : 0000047b (1147)
+User : tyler.fischer
+LM   : 
+NTLM : 372eb5274acf08a53772de4ee554e21f
+
+RID  : 0000047c (1148)
+User : justin.brooks
+LM   : 
+NTLM : 04630ce6f9c124ce29df918ba6a87912
+
+RID  : 0000047d (1149)
+User : gregory.ryan
+LM   : 
+NTLM : 53e6493d438155f9fdb89c3ba6afa8a6
+
+RID  : 0000047e (1150)
+User : emma.long
+LM   : 
+NTLM : a69db076c85df583c66aa768be4e9f44
+
+RID  : 0000047f (1151)
+User : lucas.issacs
+LM   : 
+NTLM : f3e54c5434f37dfd06d7586d04b0385d
+
+RID  : 00000480 (1152)
+User : victoria.adams
+LM   : 
+NTLM : 9623e69bb94223d7428a2565c32cd85e
+
+RID  : 00000481 (1153)
+User : david.evans
+LM   : 
+NTLM : d1db1d5eae6e9ecce8e6fc6a6cf1072a
+
+RID  : 00000482 (1154)
+User : karl.kreder
+LM   : 
+NTLM : 3d772f9ca61198d183652df93251d684
+
+RID  : 00000483 (1155)
+User : jacob.andrews
+LM   : 
+NTLM : d54b5cefd358511f90b6d02136b020ce
+
+RID  : 00000484 (1156)
+User : diego.esposito
+LM   : 
+NTLM : 74ff2ad5bd77c76ccc8a44864fff5082
+
+RID  : 00000485 (1157)
+User : jennifer.brackley
+LM   : 
+NTLM : 77134f5838abe37b5d03c1048ed58d15
+
+RID  : 00000486 (1158)
+User : ariel.lee
+LM   : 
+NTLM : 1c70afb920ef92a406ff39803f317faa
+
+RID  : 00000487 (1159)
+User : thomas.winters
+LM   : 
+NTLM : 968c249e5727bd4e3abbd2ba6cd082cd
+
+RID  : 00000488 (1160)
+User : stanley.kovacek
+LM   : 
+NTLM : 49d5b60dc11babf21693bd7a61935260
+
+RID  : 00000489 (1161)
+User : carl.grogan
+LM   : 
+NTLM : 74c9f234d1e4f503180709106635099f
+
+RID  : 0000048a (1162)
+User : issac.tarkman
+LM   : 
+NTLM : 54556bf88d3a6e84dbf25b71707c93c2
+
+RID  : 0000048b (1163)
+User : henry.boyd
+LM   : 
+NTLM : 8368f7b075955205aa64bb36bb7fb6d0
+
+RID  : 0000048c (1164)
+User : katherine.moore
+LM   : 
+NTLM : 7cc88287d35f3da1ad6c36c89b546031
+
+RID  : 0000048d (1165)
+User : james.colville
+LM   : 
+NTLM : e3ba3d583f64dcfdb6ca1cb27c52948d
+
+RID  : 0000048e (1166)
+User : jessica.mcleod
+LM   : 
+NTLM : b24604fe2043694c087164a31c830437
+
+RID  : 0000048f (1167)
+User : sylvester.siler
+LM   : 
+NTLM : 147b9215a99b5c492b6fcdcbc9786e8b
+
+RID  : 00000490 (1168)
+User : janet.fraiser
+LM   : 
+NTLM : 713cb56085cd2a355a8e19dc40ace04b
+
+RID  : 00000491 (1169)
+User : javier.gomez
+LM   : 
+NTLM : 1b0386a7ef63442e264f1b4603bbda36
+
+RID  : 00000492 (1170)
+User : isabella.lopez
+LM   : 
+NTLM : ef96ef01b82d5a1200a537b9861913e4
+
+RID  : 00000493 (1171)
+User : kelly.reed
+LM   : 
+NTLM : b1f01d13cdb6fcf1792153512dcc0084
+
+RID  : 00000494 (1172)
+User : louis.campbell
+LM   : 
+NTLM : a2f4913c6c35e61e0c4c52e0e910fd10
+
+RID  : 00000495 (1173)
+User : jason.king
+LM   : 
+NTLM : 1f1c31e9ec028ca36464f8d294c24f5a
+
+RID  : 00000496 (1174)
+User : andrew.davidson
+LM   : 
+NTLM : c0c3372f79c91fb341c9d4a92bb6dee5
+
+RID  : 00000497 (1175)
+User : barry.jenkins
+LM   : 
+NTLM : 05b963402c5e14d107e6920cd7bbd113
+
+RID  : 00000498 (1176)
+User : phillip.white
+LM   : 
+NTLM : 2314a37eb0015c14b253a64a40cb8739
+
+RID  : 00000499 (1177)
+User : bill.lee
+LM   : 
+NTLM : fe1eb9eedcf844923a7c542111f648f2
+
+RID  : 0000049a (1178)
+User : chloe.angstrom
+LM   : 
+NTLM : b66e632aa28838e44e9bb2e4b521d9b3
+
+RID  : 0000049b (1179)
+User : cameron.balinsky
+LM   : 
+NTLM : 32ac2225d7f0704022fa7f6d4bca05a7
+
+RID  : 0000049c (1180)
+User : robert.bennett
+LM   : 
+NTLM : 7bfaaf474bbc8a659fd1dcc7ae070202
+
+RID  : 0000049d (1181)
+User : hugh.bricksdale
+LM   : 
+NTLM : af464e1d82e61139630897e969b7c1a9
+
+RID  : 0000049e (1182)
+User : andrew.covel
+LM   : 
+NTLM : e028c529f97dbe3817fb85ba9275ea64
+
+RID  : 0000049f (1183)
+User : john.friesen
+LM   : 
+NTLM : ed8295d40a5dbd7ffb130462473606c6
+
+RID  : 000004a0 (1184)
+User : colleen.greene
+LM   : 
+NTLM : 0e1327c171a957caecafce86f5ef366d
+
+RID  : 000004a1 (1185)
+User : timothy.harlow
+LM   : 
+NTLM : a4f39ae10df6f79ee78ccf14486b61f3
+
+RID  : 000004a2 (1186)
+User : kevin.hartkans
+LM   : 
+NTLM : 8adec6259fcc53e347e2e224dff52dad
+
+RID  : 000004a3 (1187)
+User : james.hersfield
+LM   : 
+NTLM : eaae0b7aae3e679b69b7054ed9fb0d14
+
+RID  : 000004a4 (1188)
+User : brent.langham
+LM   : 
+NTLM : 248203606bda5ad17f92cd4e43e845bb
+
+RID  : 000004a5 (1189)
+User : gary.meyers
+LM   : 
+NTLM : 63a0befecb7e5f620351ecb8c8a184c4
+
+RID  : 000004a6 (1190)
+User : francine.michaels
+LM   : 
+NTLM : ba3da76f1d8bc5b2dc94771f6deb0044
+
+RID  : 000004a7 (1191)
+User : harold.osbourne
+LM   : 
+NTLM : 8ebb48183f86eb63ca9c66dd7567d5f9
+
+RID  : 000004a8 (1192)
+User : ian.peterson
+LM   : 
+NTLM : 96f4cf54cac6a218d541d3496f069259
+
+RID  : 000004a9 (1193)
+User : amanda.perry
+LM   : 
+NTLM : 34dee429b0e90c28fb8805c7eff869ee
+
+RID  : 000004aa (1194)
+User : bill.thompson
+LM   : 
+NTLM : 4a4403271f602c9bba80bef19a0ddb7a
+
+RID  : 000004ab (1195)
+User : norm.woods
+LM   : 
+NTLM : d0518c350e07a56d98af671e6d94ab95
+
+RID  : 000004ac (1196)
+User : dean.healey
+LM   : 
+NTLM : 9dde7afa50be013593a093edc7134d7e
+
+RID  : 000004ad (1197)
+User : rajesh.singh
+LM   : 
+NTLM : dc61e54ec238bfcadfff8ab1f47da37d
+
+RID  : 000004ae (1198)
+User : steven.caldwell
+LM   : 
+NTLM : e6d058c6de0f176834dbbb5ec91eae2a
+
+RID  : 000004af (1199)
+User : lindsey.novak
+LM   : 
+NTLM : 1057e20c84837e16fcd60ac8fc2d9ee0
+
+RID  : 000004b0 (1200)
+User : everett.young
+LM   : 
+NTLM : bdc835f12c1ba556baaba41117f54206
+
+RID  : 000004b1 (1201)
+User : matthew.scott
+LM   : 
+NTLM : 4d795095435a47ee83cc6ed0868d5a2b
+
+RID  : 000004b2 (1202)
+User : tamara.johansen
+LM   : 
+NTLM : 1cb76aa0f4fd180829da281390c6b361
+
+RID  : 000004b3 (1203)
+User : ronald.greer
+LM   : 
+NTLM : 1f34b56d264be84f4b3c51f7a9d1dcb7
+
+RID  : 000004b4 (1204)
+User : vanessa.james
+LM   : 
+NTLM : 0a2a06c9fbdbc9f5a592d6bcfbebd98b
+
+RID  : 000004b5 (1205)
+User : darren.becker
+LM   : 
+NTLM : 1883fe60b81d56142682827bc9d7ce55
+
+RID  : 000004b6 (1206)
+User : hunter.riley
+LM   : 
+NTLM : c7d1b2fa25609b5e0b93f1058014125e
+
+RID  : 000004b7 (1207)
+User : heather.barnes
+LM   : 
+NTLM : 8c9e33c1248131e314900ad323454f62
+
+RID  : 000004b8 (1208)
+User : bruce.dunning
+LM   : 
+NTLM : 41d5265bfe495c26dab8a0394e1e8817
+
+RID  : 000004b9 (1209)
+User : joshua.spencer
+LM   : 
+NTLM : c2545b9bada08f221585ee6c4e928e45
+
+RID  : 000004ba (1210)
+User : ryan.marsden
+LM   : 
+NTLM : 28115e0e75414c82645aa0d6355e4e53
+
+RID  : 000004bb (1211)
+User : chloe.armstrong
+LM   : 
+NTLM : 38074cedc63cb702993a8407eeffc2db
+
+RID  : 000004bc (1212)
+User : eli.wallace
+LM   : 
+NTLM : 469b1e47a12ac0c05b59ee1b2ed6e5a2
+
+RID  : 000004bd (1213)
+User : camile.wray
+LM   : 
+NTLM : 65029d8cdc627c3555e39753d6e22280
+
+RID  : 000004be (1214)
+User : nicholas.rush
+LM   : 
+NTLM : bf50beb056ee2b56db66aab5bfbc272c
+
+RID  : 000004bf (1215)
+User : adam.brody
+LM   : 
+NTLM : 01d6063d68e6d2734a23bae22074106d
+
+RID  : 000004c0 (1216)
+User : dale.volker
+LM   : 
+NTLM : 22df3a52075c0361fac84c133adb5c58
+
+RID  : 000004c1 (1217)
+User : lisa.park
+LM   : 
+NTLM : 45c9443d887656dd7291652f3b2b4c2c
+
+RID  : 000004c2 (1218)
+User : robert.caine
+LM   : 
+NTLM : 1511a6995616e54b1f5c3dfaea629291
+
+RID  : 000004c3 (1219)
+User : dominic.boone
+LM   : 
+NTLM : 29825a1941ea6a291b70d80b830164b4
+
+RID  : 000004c4 (1220)
+User : sonya.damji
+LM   : 
+NTLM : 49a3d12ddc3306c61ad7a0dcb38f8eda
+
+RID  : 000004c5 (1221)
+User : jeremy.franklin
+LM   : 
+NTLM : 9084a515b6095e75703621056420b979
+
+RID  : 000004c6 (1222)
+User : vince.kwan
+LM   : 
+NTLM : 289f98044ee14fe7b8c7f08f625200d7
+
+RID  : 000004c7 (1223)
+User : christopher.norris
+LM   : 
+NTLM : 4950c989dc30063a04bf793b63a4e32b
+
+RID  : 000004c8 (1224)
+User : andrea.palmer
+LM   : 
+NTLM : 9d5d1e24ef318d3974b7a4cdd8951b56
+
+RID  : 000004c9 (1225)
+User : david.walters
+LM   : 
+NTLM : b65be1a1ba4cdad36e150085376f7855
+
+RID  : 000004ca (1226)
+User : elizabeth.weir
+LM   : 
+NTLM : 9a47158f35b03ed5ba402f36d9b2feac
+
+RID  : 000004cb (1227)
+User : john.sheppard
+LM   : 
+NTLM : 7937dc70aa008d03dec4f76c7ddbf303
+
+RID  : 000004cc (1228)
+User : teyla.emmagan
+LM   : 
+NTLM : 4089a625c9f9d018899dafdd418b4c05
+
+RID  : 000004cd (1229)
+User : aiden.ford
+LM   : 
+NTLM : ff830bed881437fb43123624aef59082
+
+RID  : 000004ce (1230)
+User : rodney.mckay
+LM   : 
+NTLM : b1f207ce7ab39981d7ceb91e57de2c90
+
+RID  : 000004cf (1231)
+User : ronon.dex
+LM   : 
+NTLM : 25cced9b47e53036b804d346b04995ca
+
+RID  : 000004d0 (1232)
+User : evan.lorne
+LM   : 
+NTLM : 35ad4bbdc7b24d8cbfcb2f219f396224
+
+RID  : 000004d1 (1233)
+User : ian.stackhouse
+LM   : 
+NTLM : afa3d7ebec32c733f5dfea2cd8a28025
+
+RID  : 000004d2 (1234)
+User : laura.cadman
+LM   : 
+NTLM : 4fc2eb9b65cbd44700f580157ff61f51
+
+RID  : 000004d3 (1235)
+User : dean.bates
+LM   : 
+NTLM : e5a4328c4dd146043f310e9d104f9cab
+
+RID  : 000004d4 (1236)
+User : gideon.leonard
+LM   : 
+NTLM : f7177946135384dba2af3e25dc6061e7
+
+RID  : 000004d5 (1237)
+User : alicia.vega
+LM   : 
+NTLM : fffc71ce4baf35003af6e972691f58aa
+
+RID  : 000004d6 (1238)
+User : anne.teldy
+LM   : 
+NTLM : 86555d79e7309b1bf950acdb36059871
+
+RID  : 000004d7 (1239)
+User : dusty.mehra
+LM   : 
+NTLM : 9b3421d75dfeb5e5af7de67de38dc822
+
+RID  : 000004d8 (1240)
+User : jeremy.edison
+LM   : 
+NTLM : 6e0b933ecf988807c30c62c3836243ad
+
+RID  : 000004d9 (1241)
+User : bruce.dorsey
+LM   : 
+NTLM : 871a5d6d42d3bd6862d0c3c2c14a3c4e
+
+RID  : 000004da (1242)
+User : neil.kemp
+LM   : 
+NTLM : 7495361b848e9989bb810e674121fe9d
+
+RID  : 000004db (1243)
+User : reese.jordan
+LM   : 
+NTLM : bf176c86ee738ea330ed4208b1619437
+
+RID  : 000004dc (1244)
+User : kenneth.donovan
+LM   : 
+NTLM : b44d024160f8fad7eebf4b0de9ab3e74
+
+RID  : 000004dd (1245)
+User : elliot.rutherford
+LM   : 
+NTLM : d2a1d4fe77e35a22dd9f9fffd539dcf0
+
+RID  : 000004de (1246)
+User : carson.beckett
+LM   : 
+NTLM : 3089b303bd1879298eb5713f638b369d
+
+RID  : 000004df (1247)
+User : jennifer.keller
+LM   : 
+NTLM : 88282226375563b3f8ea454b3fdf1afa
+
+RID  : 000004e0 (1248)
+User : kate.heightmeyer
+LM   : 
+NTLM : 7d4976285976f391631394214fc9f49f
+
+RID  : 000004e1 (1249)
+User : radek.zelenka
+LM   : 
+NTLM : a97a547103ca244e5203ea671f0c008d
+
+RID  : 000004e2 (1250)
+User : katie.brown
+LM   : 
+NTLM : 5ce5396a00f3f9ccfce7ec7d75ae41a3
+
+RID  : 000004e3 (1251)
+User : paul.abrams
+LM   : 
+NTLM : 9daff7737785e82744de219d435cb529
+
+RID  : 000004e4 (1252)
+User : mike.branton
+LM   : 
+NTLM : f24db7e4a03f5f92441d38632af41bd6
+
+RID  : 000004e5 (1253)
+User : nimet.bryce
+LM   : 
+NTLM : f17db403b149af21405441766bf7b5f9
+
+RID  : 000004e6 (1254)
+User : donna.coleman
+LM   : 
+NTLM : 0a706b44b6dbf0c6bc334ae4c1bd3e95
+
+RID  : 000004e7 (1255)
+User : peter.donaldson
+LM   : 
+NTLM : 60ef7d56665977cc544ecb2f68a8ec14
+
+RID  : 000004e8 (1256)
+User : nahanni.dumais
+LM   : 
+NTLM : a7eef1c38deea8aed10e9e94c3edef35
+
+RID  : 000004e9 (1257)
+User : brendan.gall
+LM   : 
+NTLM : 71eda00a3d9086f95ba258ec06906da6
+
+RID  : 000004ea (1258)
+User : michael.graydon
+LM   : 
+NTLM : 1ae05684203c5a8c69a70ac15a963407
+
+RID  : 000004eb (1259)
+User : peter.kavanagh
+LM   : 
+NTLM : b48a8dd8bd2896b2cd5b3c7a52b85c91
+
+RID  : 000004ec (1260)
+User : ray.lindstrom
+LM   : 
+NTLM : a3be651ecb0a03ca6fb08cf89d0fb619
+
+RID  : 000004ed (1261)
+User : miko.kusanagi
+LM   : 
+NTLM : b11f5923d285f052973c55697045712c
+
+RID  : 000004ee (1262)
+User : damian.peterson
+LM   : 
+NTLM : b804345bb3e1723ae35d20a0df1db3f6
+
+RID  : 000004ef (1263)
+User : umar.monroe
+LM   : 
+NTLM : 37cd4f4dcd09cedf6304d420ee40344b
+
+RID  : 000004f0 (1264)
+User : allison.porter
+LM   : 
+NTLM : ba47f3c125fee93059ccda85cfe58378
+
+RID  : 000004f1 (1265)
+User : joseph.mallozzi
+LM   : 
+NTLM : f0f0bf3cbac5d27024e377418d772c7f
+
+RID  : 000004f2 (1266)
+User : fiona.simpson
+LM   : 
+NTLM : db390958aa870ed51fc4acc22a4b4b05
+
+RID  : 000004f3 (1267)
+User : nicholas.wagner
+LM   : 
+NTLM : 51290d12342194b76f9596a26663dd28
+
+RID  : 000004f4 (1268)
+User : charles.nichols
+LM   : 
+NTLM : 904c4e0374cd2ed706af9731ba91b753
+
+RID  : 000004f5 (1269)
+User : michael.lynch
+LM   : 
+NTLM : 91732c1d0e877eb22181401f44ceeb46
+
+RID  : 000004f6 (1270)
+User : patrick.hays
+LM   : 
+NTLM : c9e00707717d61127d1f691ab7333a0e
+
+RID  : 000004f7 (1271)
+User : john.dickenson
+LM   : 
+NTLM : 6d1249c9d8e1c84b7fa464114c628224
+
+RID  : 000004f8 (1272)
+User : mark.collins
+LM   : 
+NTLM : db3b72993ecd3a3681645087279649ac
+
+RID  : 000003e9 (1001)
+User : SGCDC001$
+LM   : 
+NTLM : 84fd05eb382816da89e31360bee2571f
+
+RID  : 000004f9 (1273)
+User : SGCWKS10246137$
+LM   : 
+NTLM : 3f4e0a420eb473c1fe570de04734cdf8
+
+RID  : 000004fa (1274)
+User : SGCWKS10348279$
+LM   : 
+NTLM : bbbf03d1ed85bd52571ce424964961d7

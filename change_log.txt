@@ -1,0 +1,35 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+### Added
+- Ability to read in credential output from a previous run
+- Ability to read XML formatted Cobalt Strike credential exports
+
+## [2.0.0] - 2020-04-23
+### Added
+- A change log
+- ASCII art (two different versions; based on terminal width)
+- Version number to code
+- Support for Python 3
+- JSON config file to minimize the need to consistently provide command-line arguments or edit the code directly to change certain settings
+- Logging to help with troubleshooting
+- Three output verbosity levels (0 = Minimal, 1 = Normal, 2 = Info)
+- Simple wordlist support to aid in password cracking
+- Sample data from my lab network; useful for trying out the tool if you don't have your own data
+- README with more than one line of info
+
+### Changed
+- Removed command-line options for individual file types and replaced with data type auto-detection based on filename. Files must be named properly; however, this vastly improves the flexibility of Parseltongue as it allows processing multiple files of the same type, including across NT domains.
+- Modified console output (including spacing) to improve readability
+- Modified the password cracker ingest output file to only include accounts that don't have a matching plaintext password
+
+### Removed
+- Support for Python 2
+- Limitation to process data for a single NT domain at a time
+
+### Fixed
+- Added quotes around CSV output fields to avoid issues where plaintext password contain commas

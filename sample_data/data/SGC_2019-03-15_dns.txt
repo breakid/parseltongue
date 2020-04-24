@@ -1,0 +1,56 @@
+
+;
+;  Zone:    SGC.HWS.MIL
+;  Server:  SGCDC001.SGC.HWS.MIL
+;  Time:    Sat Mar 16 02:43:05 2019 UTC
+;
+@ [Aging:3665858] 600 A	172.16.100.5
+		 3600 NS	sgcdc001.sgc.hws.mil.
+		 3600 SOA	sgcdc001.sgc.hws.mil. hostmaster.sgc.hws.mil. 39 900 600 86400 3600
+_msdcs 3600 NS	sgcdc001.sgc.hws.mil.
+
+_gc._tcp.CMC._sites [Aging:3665858] 600 SRV	0 100 3268 sgcdc001.sgc.hws.mil.
+
+_kerberos._tcp.CMC._sites [Aging:3665858] 600 SRV	0 100 88 sgcdc001.sgc.hws.mil.
+
+_ldap._tcp.CMC._sites [Aging:3665858] 600 SRV	0 100 389 sgcdc001.sgc.hws.mil.
+
+_gc._tcp [Aging:3665858] 600 SRV	0 100 3268 sgcdc001.sgc.hws.mil.
+
+_kerberos._tcp [Aging:3665858] 600 SRV	0 100 88 sgcdc001.sgc.hws.mil.
+
+_kpasswd._tcp [Aging:3665858] 600 SRV	0 100 464 sgcdc001.sgc.hws.mil.
+
+_ldap._tcp [Aging:3665858] 600 SRV	0 100 389 sgcdc001.sgc.hws.mil.
+
+_kerberos._udp [Aging:3665858] 600 SRV	0 100 88 sgcdc001.sgc.hws.mil.
+
+_kpasswd._udp [Aging:3665858] 600 SRV	0 100 464 sgcdc001.sgc.hws.mil.
+DomainDnsZones [Aging:3665858] 600 A	172.16.100.5
+
+_ldap._tcp.CMC._sites.DomainDnsZones [Aging:3665858] 600 SRV	0 100 389 sgcdc001.sgc.hws.mil.
+
+_ldap._tcp.DomainDnsZones [Aging:3665858] 600 SRV	0 100 389 sgcdc001.sgc.hws.mil.
+ForestDnsZones [Aging:3665858] 600 A	172.16.100.5
+
+_ldap._tcp.CMC._sites.ForestDnsZones [Aging:3665858] 600 SRV	0 100 389 sgcdc001.sgc.hws.mil.
+
+_ldap._tcp.ForestDnsZones [Aging:3665858] 600 SRV	0 100 389 sgcdc001.sgc.hws.mil.
+
+sgcdc001 3600 A	172.16.100.5
+
+SGCFS001 3600 A	172.16.100.5
+
+SGCRTRCORE01 3600 A	172.16.0.1
+
+SGCWEB001 3600 A	192.168.0.10
+
+SGCWKS10246137 [Aging:3665858] 1200 A	172.16.10.23
+
+SGCWKS10348279 [Aging:3662400] 1200 A	172.16.50.28
+
+www 3600 CNAME	sgcweb001.sgc.hws.mil.
+
+;
+;  Finished zone: 53 nodes and 26 records in 0 seconds
+;

@@ -1,0 +1,1420 @@
+sAMAccountName: Administrator
+name: Administrator
+lastLogon: 131971793560698568
+lastLogonTimestamp: 131970893885490299
+pwdLastSet: 131970895050649246
+adminCount: 1
+userAccountControl: 512
+memberOf: CN=Group Policy Creator Owners,CN=Users,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Domain Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Enterprise Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Schema Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Administrators,CN=Builtin,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Administrator,CN=Users,DC=SGC,DC=HWS,DC=MIL
+description: Built-in account for administering the computer/domain
+objectSid: S-1-5-21-60804857-299774370-1069655206-500
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Administrator,CN=Users,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: Guest
+name: Guest
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 0
+adminCount: 
+userAccountControl: 66082
+memberOf: CN=Guests,CN=Builtin,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Guest,CN=Users,DC=SGC,DC=HWS,DC=MIL
+description: Built-in account for guest access to the computer/domain
+objectSid: S-1-5-21-60804857-299774370-1069655206-501
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Guest,CN=Users,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: krbtgt
+name: krbtgt
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846397542026274
+adminCount: 1
+userAccountControl: 514
+memberOf: CN=Denied RODC Password Replication Group,CN=Users,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=krbtgt,CN=Users,DC=SGC,DC=HWS,DC=MIL
+description: Key Distribution Center Service Account
+objectSid: S-1-5-21-60804857-299774370-1069655206-502
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=krbtgt,CN=Users,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: george.hammond
+name: Hammond, George LTG
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399041541129
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Hammond\, George LTG,DC=SGC,DC=HWS,DC=MIL
+description: Commanding Officer, SGC
+objectSid: S-1-5-21-60804857-299774370-1069655206-1112
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Hammond\, George LTG,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: walter.harriman
+name: Harriman, Walter CMSGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399042010828
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Harriman\, Walter CMSGT,OU=SGC Operations,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1113
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Harriman\, Walter CMSGT,OU=SGC Operations,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jack.oneill
+name: O'Neill, Jack COL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399042323245
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=O'Neill\, Jack COL,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: SG-1 Team Leader
+objectSid: S-1-5-21-60804857-299774370-1069655206-1114
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=O'Neill\, Jack COL,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: samantha.carter
+name: Carter, Samantha MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399042788071
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Science Lab Access,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Carter\, Samantha MAJ,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1115
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Carter\, Samantha MAJ,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: daniel.jackson
+name: Jackson, Daniel
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399043105575
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Jackson\, Daniel,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1116
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Jackson\, Daniel,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: tealc
+name: Teal'c
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399043413067
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Off-World Integrees,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Teal'c,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1117
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Teal'c,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jonas.quinn
+name: Quinn, Jonas
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399043884297
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Off-World Integrees,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Quinn\, Jonas,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1118
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Quinn\, Jonas,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: cameron.mitchell
+name: Mitchell, Cameron COL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399044190806
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Mitchell\, Cameron COL,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1119
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Mitchell\, Cameron COL,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: vala.maldoran
+name: Mal Doran, Vala
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399044508279
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Off-World Integrees,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Mal Doran\, Vala,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1120
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Mal Doran\, Vala,OU=SG-1,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: louis.ferretti
+name: Ferretti, Louis MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399044815780
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Ferretti\, Louis MAJ,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1121
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Ferretti\, Louis MAJ,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: doug.penhall
+name: Penhall, Doug LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399045286987
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Penhall\, Doug LT,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1122
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Penhall\, Doug LT,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: peter.sands
+name: Sands, Peter LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399045753185
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Sands\, Peter LT,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1123
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Sands\, Peter LT,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: james.bell
+name: Bell, James SGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399046378279
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Bell\, James SGT,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1124
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Bell\, James SGT,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: michael.griff
+name: Griff, Michael
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399046695631
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Griff\, Michael,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1125
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Griff\, Michael,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: charles.kawalsky
+name: Kawalsky, Charles MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399047166837
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Kawalsky\, Charles MAJ,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1126
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Kawalsky\, Charles MAJ,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: carl.warren
+name: Warren, Carl MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399047474380
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Warren\, Carl MAJ,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1127
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Warren\, Carl MAJ,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: john.casey
+name: Casey, John SSGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399047940592
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Casey\, John SSGT,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1128
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Casey\, John SSGT,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: benjamin.pierce
+name: Pierce, Benjamin COL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399048253051
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Pierce\, Benjamin COL,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1129
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Pierce\, Benjamin COL,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: michael.coburn
+name: Coburn, Michael MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399048729248
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Coburn\, Michael MAJ,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1130
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Coburn\, Michael MAJ,OU=SG-2,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: robert.makepeace
+name: Makepeace, Robert COL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399049041721
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Makepeace\, Robert COL,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1131
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Makepeace\, Robert COL,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: albert.reynolds
+name: Reynolds, Albert MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399049354199
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Reynolds\, Albert MAJ,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1132
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Reynolds\, Albert MAJ,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: alexander.baker
+name: Baker, Alexander CAPT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399049666662
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Baker\, Alexander CAPT,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1133
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Baker\, Alexander CAPT,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: richard.bosco
+name: Bosco, Richard SGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399049974201
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Bosco\, Richard SGT,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1134
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Bosco\, Richard SGT,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: william.castleman
+name: Castleman, William MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399050445361
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Castleman\, William MAJ,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1135
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Castleman\, William MAJ,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: kevin.phillips
+name: Phillips, Kevin LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399050752881
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Phillips\, Kevin LT,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1136
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Phillips\, Kevin LT,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: robert.walters
+name: Walters, Robert SGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399051070335
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Walters\, Robert SGT,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1137
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Walters\, Robert SGT,OU=SG-3,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: christopher.wallace
+name: Wallace, Christopher MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399051536560
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Wallace\, Christopher MAJ,OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1138
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Wallace\, Christopher MAJ,OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: roger.watts
+name: Watts, Roger CAPT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399051853750
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Watts\, Roger CAPT,OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1139
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Watts\, Roger CAPT,OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jonathan.reed
+name: Reed, Jonathan LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399052320249
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Reed\, Jonathan LT,OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1140
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Reed\, Jonathan LT,OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: richard.heinig
+name: Heinig, Richard CW2
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399052632792
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Heinig\, Richard CW2,OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1141
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Heinig\, Richard CW2,OU=SG-4,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: timothy.harper
+name: Harper, Timothy MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399052940233
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Harper\, Timothy MAJ,OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1142
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Harper\, Timothy MAJ,OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jessica.altman
+name: Altman, Jessica CAPT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399053257756
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Altman\, Jessica CAPT,OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1143
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Altman\, Jessica CAPT,OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: steven.davis
+name: Davis, Steven LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399053569858
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Davis\, Steven LT,OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1144
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Davis\, Steven LT,OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: kirk.russell
+name: Russell, Kirk SGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399054036432
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Russell\, Kirk SGT,OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1145
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Russell\, Kirk SGT,OU=SG-5,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jason.barnes
+name: Barnes, Jason COL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399054353867
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Barnes\, Jason COL,OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1146
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Barnes\, Jason COL,OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: tyler.fischer
+name: Fischer, Tyler LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399054661373
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Fischer\, Tyler LT,OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1147
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Fischer\, Tyler LT,OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: justin.brooks
+name: Brooks, Justin LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399055127645
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Brooks\, Justin LT,OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1148
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Brooks\, Justin LT,OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: gregory.ryan
+name: Ryan, Gregory SrA
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399055450196
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Ryan\, Gregory SrA,OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1149
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Ryan\, Gregory SrA,OU=SG-6,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: emma.long
+name: Long, Emma MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399055757525
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Long\, Emma MAJ,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1150
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Long\, Emma MAJ,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: lucas.issacs
+name: Issacs, Lucas CAPT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399056223914
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Issacs\, Lucas CAPT,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1151
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Issacs\, Lucas CAPT,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: victoria.adams
+name: Adams, Victoria SPC
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399056536247
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Adams\, Victoria SPC,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1152
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Adams\, Victoria SPC,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: david.evans
+name: Evans, David
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399056853683
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Evans\, David,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1153
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Evans\, David,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: karl.kreder
+name: Kreder, Karl
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399057166183
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Kreder\, Karl,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1154
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Kreder\, Karl,OU=SG-7,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jacob.andrews
+name: Andrews, Jacob MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399057473689
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Andrews\, Jacob MAJ,OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1155
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Andrews\, Jacob MAJ,OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: diego.esposito
+name: Esposito, Diego LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399057786139
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Esposito\, Diego LT,OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1156
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Esposito\, Diego LT,OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jennifer.brackley
+name: Brackley, Jennifer LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399058253886
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Brackley\, Jennifer LT,OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1157
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Brackley\, Jennifer LT,OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: ariel.lee
+name: Lee, Ariel
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399058569860
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Lee\, Ariel,OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1158
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Lee\, Ariel,OU=SG-8,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: thomas.winters
+name: Winters, Thomas COL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399058882329
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Winters\, Thomas COL,OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1159
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Winters\, Thomas COL,OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: stanley.kovacek
+name: Kovacek, Stanley MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399059353531
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Kovacek\, Stanley MAJ,OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1160
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Kovacek\, Stanley MAJ,OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: carl.grogan
+name: Grogan, Carl LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399059666083
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Grogan\, Carl LT,OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1161
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Grogan\, Carl LT,OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: issac.tarkman
+name: Tarkman, Issac
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399059978472
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Tarkman\, Issac,OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1162
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Tarkman\, Issac,OU=SG-9,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: henry.boyd
+name: Boyd, Henry MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399060285996
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Boyd\, Henry MAJ,OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1163
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Boyd\, Henry MAJ,OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: katherine.moore
+name: Moore, Katherine CAPT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399060598469
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Moore\, Katherine CAPT,OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1164
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Moore\, Katherine CAPT,OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: james.colville
+name: Colville, James LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399061069699
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Colville\, James LT,OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1165
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Colville\, James LT,OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jessica.mcleod
+name: McLeod, Jessica
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399061387125
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=McLeod\, Jessica,OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1166
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=McLeod\, Jessica,OU=SG-10,OU=SG Teams,OU=J3,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: sylvester.siler
+name: Siler, Sylvester MSGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399061848449
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Siler\, Sylvester MSGT,OU=Maintenance,OU=J4,DC=SGC,DC=HWS,DC=MIL
+description: Maintenance technician
+objectSid: S-1-5-21-60804857-299774370-1069655206-1167
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Siler\, Sylvester MSGT,OU=Maintenance,OU=J4,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: janet.fraiser
+name: Fraiser, Janet
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399062160917
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Bio Lab Access,OU=Medical,OU=J4,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Fraiser\, Janet,OU=Medical,OU=J4,DC=SGC,DC=HWS,DC=MIL
+description: Chief Medical Officer, SGC
+objectSid: S-1-5-21-60804857-299774370-1069655206-1168
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Fraiser\, Janet,OU=Medical,OU=J4,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: javier.gomez
+name: Gomez, Javier MAJ
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399062478339
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Workstation Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=File Server Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Gomez\, Javier MAJ,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1169
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Gomez\, Javier MAJ,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: isabella.lopez
+name: Lopez, Isabella TSGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399062790821
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Network Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Network Configuration Operators,CN=Builtin,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Lopez\, Isabella TSGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1170
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Lopez\, Isabella TSGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: kelly.reed
+name: Reed, Kelly LT
+lastLogon: 131973427963480384
+lastLogonTimestamp: 131970867016722418
+pwdLastSet: 131846399100759503
+adminCount: 1
+userAccountControl: 66048
+memberOf: CN=Workstation Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=File Server Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Domain Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Enterprise Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Schema Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Reed\, Kelly LT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1171
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Reed\, Kelly LT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: louis.campbell
+name: Campbell, Louis SSGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399100600867
+adminCount: 1
+userAccountControl: 66048
+memberOf: CN=Domain Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Enterprise Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Schema Admins,CN=Users,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Campbell\, Louis SSGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1172
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Campbell\, Louis SSGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jason.king
+name: King, Jason TSGT
+lastLogon: 131846424950112795
+lastLogonTimestamp: 131846407512299124
+pwdLastSet: 131846399100918242
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Portal Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Web Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=King\, Jason TSGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1173
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=King\, Jason TSGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: andrew.davidson
+name: Davidson, Andrew SGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399064199437
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Portal Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Web Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Davidson\, Andrew SGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1174
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Davidson\, Andrew SGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: barry.jenkins
+name: Jenkins, Barry TSGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399064506994
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Network Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Network Configuration Operators,CN=Builtin,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Jenkins\, Barry TSGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1175
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Jenkins\, Barry TSGT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: phillip.white
+name: White, Phillip LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399064973224
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Network Admins,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+memberOf: CN=Network Configuration Operators,CN=Builtin,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=White\, Phillip LT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1176
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=White\, Phillip LT,OU=IT,OU=J6,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: bill.lee
+name: Lee, Bill
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399065285887
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Science Lab Access,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Lee\, Bill,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1177
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Lee\, Bill,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: chloe.angstrom
+name: Angstrom, Chloe
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399065603109
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Science Lab Access,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Angstrom\, Chloe,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1178
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Angstrom\, Chloe,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: cameron.balinsky
+name: Balinsky, Cameron
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399065910657
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Balinsky\, Cameron,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1179
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Balinsky\, Cameron,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: robert.bennett
+name: Bennett, Robert
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399066381841
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Bennett\, Robert,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1180
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Bennett\, Robert,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: hugh.bricksdale
+name: Bricksdale, Hugh
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399066699271
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Bricksdale\, Hugh,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1181
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Bricksdale\, Hugh,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: andrew.covel
+name: Covel, Andrew
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399067006837
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Covel\, Andrew,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1182
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Covel\, Andrew,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: john.friesen
+name: Friesen, John
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399067324379
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Friesen\, John,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1183
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Friesen\, John,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: colleen.greene
+name: Greene, Colleen
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399067636736
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Greene\, Colleen,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1184
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Greene\, Colleen,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: timothy.harlow
+name: Harlow, Timothy
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399068103152
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Harlow\, Timothy,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1185
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Harlow\, Timothy,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: kevin.hartkans
+name: Hartkans, Kevin
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399068410505
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Hartkans\, Kevin,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to security violation
+objectSid: S-1-5-21-60804857-299774370-1069655206-1186
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Hartkans\, Kevin,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: james.hersfield
+name: Hersfield, James
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399068722959
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Hersfield\, James,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1187
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Hersfield\, James,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: brent.langham
+name: Langham, Brent
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399069040404
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Langham\, Brent,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to security violation
+objectSid: S-1-5-21-60804857-299774370-1069655206-1188
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Langham\, Brent,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: gary.meyers
+name: Meyers, Gary
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399069352900
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Meyers\, Gary,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1189
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Meyers\, Gary,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: francine.michaels
+name: Michaels, Francine
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399069665368
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Michaels\, Francine,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1190
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Michaels\, Francine,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: harold.osbourne
+name: Osbourne, Harold
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399070131641
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Osbourne\, Harold,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1191
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Osbourne\, Harold,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: ian.peterson
+name: Peterson, Ian
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399070449043
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Peterson\, Ian,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1192
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Peterson\, Ian,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: amanda.perry
+name: Perry, Amanda
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399070756549
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Science Lab Access,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Perry\, Amanda,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1193
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Perry\, Amanda,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: bill.thompson
+name: Thompson, Bill
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399071074091
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Thompson\, Bill,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Account disabled due to inactivity (ref. Policy 3.4-1)
+objectSid: S-1-5-21-60804857-299774370-1069655206-1194
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Thompson\, Bill,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: norm.woods
+name: Woods, Norm
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399071540280
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Woods\, Norm,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1195
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Woods\, Norm,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: dean.healey
+name: Healey, Dean
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399071852706
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Healey\, Dean,OU=BC-303,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1196
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Healey\, Dean,OU=BC-303,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: rajesh.singh
+name: Singh, Rajesh
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399072160240
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Singh\, Rajesh,OU=BC-303,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1197
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Singh\, Rajesh,OU=BC-303,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: steven.caldwell
+name: Caldwell, Steven COL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399072477675
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Caldwell\, Steven COL,OU=Daedalus,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Commanding Officer, Daedalus
+objectSid: S-1-5-21-60804857-299774370-1069655206-1198
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Caldwell\, Steven COL,OU=Daedalus,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: lindsey.novak
+name: Novak, Lindsey
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399072943920
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Novak\, Lindsey,OU=Daedalus,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1199
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Novak\, Lindsey,OU=Daedalus,OU=BC-304,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: everett.young
+name: Young, Everett COL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399073261369
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Young\, Everett COL,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Commanding Officer, Destiny
+objectSid: S-1-5-21-60804857-299774370-1069655206-1200
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Young\, Everett COL,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: matthew.scott
+name: Scott, Matthew LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399073568569
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Scott\, Matthew LT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1201
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Scott\, Matthew LT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: tamara.johansen
+name: Johansen, Tamara LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399073886343
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Johansen\, Tamara LT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1202
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Johansen\, Tamara LT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: ronald.greer
+name: Greer, Ronald MSGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399074198792
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Greer\, Ronald MSGT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1203
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Greer\, Ronald MSGT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: vanessa.james
+name: James, Vanessa 2LT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399074665074
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=James\, Vanessa 2LT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1204
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=James\, Vanessa 2LT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: darren.becker
+name: Becker, Darren PVT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399074972691
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Becker\, Darren PVT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1205
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Becker\, Darren PVT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: hunter.riley
+name: Riley, Hunter SGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399075291235
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Riley\, Hunter SGT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1206
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Riley\, Hunter SGT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: heather.barnes
+name: Barnes, Heather CPL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399075757558
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Barnes\, Heather CPL,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1207
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Barnes\, Heather CPL,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: bruce.dunning
+name: Dunning, Bruce AMN
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399076073690
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Dunning\, Bruce AMN,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1208
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Dunning\, Bruce AMN,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: joshua.spencer
+name: Spencer, Joshua SGT
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399076386181
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Spencer\, Joshua SGT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1209
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Spencer\, Joshua SGT,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: ryan.marsden
+name: Marsden, Ryan CPL
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399076693669
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Marsden\, Ryan CPL,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1210
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Marsden\, Ryan CPL,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: chloe.armstrong
+name: Armstrong, Chloe
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399077011132
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Armstrong\, Chloe,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1211
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Armstrong\, Chloe,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: eli.wallace
+name: Wallace, Eli
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399077472395
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Wallace\, Eli,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1212
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Wallace\, Eli,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: camile.wray
+name: Wray, Camile
+lastLogon: 131973426453784092
+lastLogonTimestamp: 131970856334385744
+pwdLastSet: 131846399101230794
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Wray\, Camile,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Human Resources, IOA; deployed on Destiny
+objectSid: S-1-5-21-60804857-299774370-1069655206-1213
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Wray\, Camile,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: nicholas.rush
+name: Rush, Nicholas
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399078102317
+adminCount: 
+userAccountControl: 66048
+memberOf: CN=Science Lab Access,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+distinguishedName: CN=Rush\, Nicholas,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: Lead Scientist, Destiny
+objectSid: S-1-5-21-60804857-299774370-1069655206-1214
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Rush\, Nicholas,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: adam.brody
+name: Brody, Adam
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399078409842
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Brody\, Adam,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1215
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Brody\, Adam,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: dale.volker
+name: Volker, Dale
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399078722486
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Volker\, Dale,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1216
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Volker\, Dale,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: lisa.park
+name: Park, Lisa
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399079193512
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Park\, Lisa,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1217
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Park\, Lisa,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: robert.caine
+name: Caine, Robert
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399079506064
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Caine\, Robert,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1218
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Caine\, Robert,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: dominic.boone
+name: Boone, Dominic
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399079818463
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Boone\, Dominic,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1219
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Boone\, Dominic,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: sonya.damji
+name: Damji, Sonya
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399080130959
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Damji\, Sonya,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1220
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Damji\, Sonya,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: jeremy.franklin
+name: Franklin, Jeremy
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399080597222
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Franklin\, Jeremy,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1221
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Franklin\, Jeremy,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: vince.kwan
+name: Kwan, Vince
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399080909078
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Kwan\, Vince,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1222
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Kwan\, Vince,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: christopher.norris
+name: Norris, Christopher
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399081232064
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Norris\, Christopher,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1223
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Norris\, Christopher,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: andrea.palmer
+name: Palmer, Andrea
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399081852122
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Palmer\, Andrea,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1224
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Palmer\, Andrea,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+sAMAccountName: david.walters
+name: Walters, David
+lastLogon: 0
+lastLogonTimestamp: 
+pwdLastSet: 131846399082159605
+adminCount: 
+userAccountControl: 66048
+memberOf: 
+distinguishedName: CN=Walters\, David,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL
+description: 
+objectSid: S-1-5-21-60804857-299774370-1069655206-1225
+adspath: LDAP://SGCDC001.SGC.HWS.MIL/CN=Walters\, David,OU=Icarus,OU=Special Projects,OU=R&D,OU=J2,DC=SGC,DC=HWS,DC=MIL

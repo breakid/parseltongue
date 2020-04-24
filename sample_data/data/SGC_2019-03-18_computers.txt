@@ -1,0 +1,10 @@
+name: SGCDC001
+dNSHostName: SGCDC001.SGC.HWS.MIL
+operatingSystem: Windows Server 2012 R2 Standard Evaluation
+operatingSystemVersion: 6.3 (9600)
+lastLogon: 131972484064956398
+lastLogonTimestamp: 131970856071244377
+userAccountControl: 532480
+distinguishedName: CN=SGCDC001,OU=Domain Controllers,DC=SGC,DC=HWS,DC=MIL
+description: 
+adspath: 

@@ -1,0 +1,30 @@
+name: SGCDC001
+dNSHostName: SGCDC001.SGC.HWS.MIL
+operatingSystem: Windows Server 2012 R2 Standard Evaluation
+operatingSystemVersion: 6.3 (9600)
+lastLogon: 131972484064956398
+lastLogonTimestamp: 131970856071244377
+userAccountControl: 532480
+distinguishedName: CN=SGCDC001,OU=Domain Controllers,DC=SGC,DC=HWS,DC=MIL
+description: 
+adspath: 
+name: SGCWKS10246137
+dNSHostName: SGCWKS10246137.SGC.HWS.MIL
+operatingSystem: Windows 10 Enterprise Evaluation
+operatingSystemVersion: 10.0 (10586)
+lastLogon: 131972484125742953
+lastLogonTimestamp: 131970856319539616
+userAccountControl: 4096
+distinguishedName: CN=SGCWKS10246137,CN=Computers,DC=SGC,DC=HWS,DC=MIL
+description: 
+adspath: 
+name: SGCWKS10348279
+dNSHostName: SGCWKS10348279.SGC.HWS.MIL
+operatingSystem: Windows 10 Enterprise Evaluation
+operatingSystemVersion: 10.0 (10586)
+lastLogon: 131846430928715113
+lastLogonTimestamp: 131846407172923704
+userAccountControl: 4096
+distinguishedName: CN=SGCWKS10348279,CN=Computers,DC=SGC,DC=HWS,DC=MIL
+description: 
+adspath: 

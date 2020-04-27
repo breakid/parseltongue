@@ -90,7 +90,7 @@ Parseltongue has extensive built-in help. Run the script with no arguments to se
 ### Configuration File Settings
 The following are the default configuration settings. If any command-line arguments are specified (e.g., `-o`, `-d`), they will override these settings for the current execution.
 
-```json
+```
 {
     "INPUT": {
         "DSQUERY_ATTRS": {
@@ -133,7 +133,7 @@ The following are the default configuration settings. If any command-line argume
 
 There are three main sections (Input, Output, and Logging) that group settings related to those features; additional settings at the root level are considered global to the entire script. If a config file omits a required setting, it will fall back to the default value. Technically you could remove everything from the config file except for the outer `{}`, and it will simply use the default values.
 
-```json
+```
 {
     "INPUT": {
         # Change the items in this list to control which attributes Parseltongue attempts to parse

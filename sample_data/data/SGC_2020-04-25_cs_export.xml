@@ -1,0 +1,34 @@
+<credentials>
+	<entry>
+			<user>daniel.jackson</user>
+			<password>e6ed03228cb839a38026b3d4bf8808f8</password>
+			<realm>SGC</realm>
+			<source>hashdump</source>
+			<host>172.16.100.5</host>
+			<note></note>
+	</entry>
+	<entry>
+			<user>daniel.jackson</user>
+			<password>I'mNotDeadYet1!</password>
+			<realm>SGC</realm>
+			<source>manual</source>
+			<host></host>
+			<note></note>
+	</entry>
+	<entry>
+			<user>george.hammond</user>
+			<password>2bce5d45553403e01773fec76016cfa2</password>
+			<realm>SGC</realm>
+			<source>hashdump</source>
+			<host>172.16.100.5</host>
+			<note></note>
+	</entry>
+	<entry>
+			<user>jack.oneill</user>
+			<password>PlentyofFishintheLake</password>
+			<realm>SGC</realm>
+			<source>manual</source>
+			<host></host>
+			<note>Found in passwords.txt on user's desktop</note>
+	</entry>
+</credentials>

@@ -1,1 +1,84 @@
-{"INPUT": {"DATA": {"FILENAME_DATE_FORMAT": "%Y-%m-%d"}, "WORDLIST": "sample_data\\wordlists"}, "OUTPUT": {"DATA": {"FILENAME_DATE_FORMAT": "%Y-%m-%d", "DIR": "output", "MULTI_OBJECT_DELIMITER": "\n", "SEPARATE_BY_DOMAIN": false}, "WORDLIST": "wordlists\\wordlist.txt"}, "LOGGING": {"OUTPUT_DIR": "logs", "VERBOSITY": 2, "TIMEFORMAT_FILE": "%Y-%m-%d_%H%M%S", "TIMEFORMAT_LOG": "%Y-%m-%d %H:%M:%S", "WRITE_FILE": true}, "VERBOSITY": 1}
+{
+    "INPUT": {
+        "DSQUERY_ATTRS": {
+            "COMPUTER": [
+                "dnshostname",
+                "operatingsystem",
+                "operatingsystemversion",
+                "operatingsystemservicepack",
+                "lastlogon",
+                "lastlogontimestamp",
+                "useraccountcontrol",
+                "description",
+                "memberof",
+                "primarygroupid",
+                "location",
+                "objectsid",
+                "adspath"
+            ],
+            "GPO": [
+                "displayname",
+                "name",
+                "adspath"
+            ],
+            "GROUP": [
+                "samaccountname",
+                "name",
+                "distinguishedname",
+                "objectsid",
+                "primarygroupid",
+                "description",
+                "member",
+                "adspath"
+            ],
+            "OU": [
+                "name",
+                "managedby",
+                "description",
+                "gplink",
+                "adspath"
+            ],
+            "USER": [
+                "samaccountname",
+                "name",
+                "distinguishedname",
+                "lastlogon",
+                "lastlogontimestamp",
+                "pwdlastset",
+                "useraccountcontrol",
+                "memberof",
+                "description",
+                "objectsid",
+                "primarygroupid",
+                "adspath"
+            ]
+        },
+        "DATA": {
+            "FILENAME_DATE_FORMAT": "%Y-%m-%d",
+            "CS_EXPORT": {
+                "FOREIGN_DOMAIN": "include",
+                "INVALID_REALM": "prompt",
+                "POPULATE_COMMENT": "append"
+            }
+        },
+        "WORDLIST": "sample_data\\wordlists"
+    },
+    "OUTPUT": {
+        "DATA": {
+            "FILENAME_DATE_FORMAT": "%Y-%m-%d",
+            "DIR": "output",
+            "MULTI_OBJECT_DELIMITER": "\n",
+            "SEPARATE_BY_DOMAIN": false
+        },
+        "WORDLIST": "wordlists\\wordlist.txt"
+    },
+    "LOGGING": {
+        "OUTPUT_DIR": "logs",
+        "VERBOSITY": 2,
+        "TIMEFORMAT_FILE": "%Y-%m-%d_%H%M%S",
+        "TIMEFORMAT_LOG": "%Y-%m-%d %H:%M:%S",
+        "WRITE_FILE": true
+    },
+    "DEBUG": true,
+    "VERBOSITY": 1
+}

@@ -6,8 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Ability to read in credential output from a previous run
-- Ability to read XML formatted Cobalt Strike credential exports
+- Add configuration option to output a master credential file spanning all domains
+- Add a configuration option to specify the order of elements in the input filename (e.g., specify the data type before the date)
+
+
+## [2.1.0]
+### Added
+- Ability to read in previous Parseltongue credential output
+
+### Changed
+- Modified the Cobalt Strike export parser to support XML exports in addition to text exports. This will provide more accurate results, particularly in cases where plaintext password entries have usernames with spaces
+- Moved the dsquery attributes to the config file so users can specify custom attributes for different config profiles
+
+### Fixed
+- Modified load_wordlist() to only strip tabs and newlines from plaintext passwords since apparently Windows allows passwords with spaces at the ends
+- load_config() will now recursively merge settings rather than just at the root level. Added verbose logging for overridden settings and warnings if unexpected settings are found in the loaded config
+
 
 ## [2.0.0] - 2020-04-23
 ### Added

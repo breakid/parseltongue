@@ -1,0 +1,31 @@
+Domain : NID / S-1-5-21-60804857-299774370-1024653184
+
+RID  : 000001f4 (500)
+User : Administrator
+LM   : 
+NTLM : 49a9a1e1f0127c7d70d750349d0bc09a
+
+RID  : 000001f5 (501)
+User : Guest
+LM   : 
+NTLM : 
+
+RID  : 000001f6 (502)
+User : krbtgt
+LM   : 
+NTLM : 17657c25cd7497a42c5cc8f479947474
+
+RID  : 00000458 (1112)
+User : harold.maybourne
+LM   : 
+NTLM : 47d0141aa5e111b0512a4521874d2a3a
+
+RID  : 00000459 (1113)
+User : malcolm.barrett
+LM   : 
+NTLM : a80627e72a489ba8eff4b11bbd12842a
+
+RID  : 00000460 (1114)
+User : richard.woolsey
+LM   : 
+NTLM : 25f14385ee1782bb71fee1e5835d630f

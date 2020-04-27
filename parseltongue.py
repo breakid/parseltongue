@@ -14,14 +14,16 @@
 # along with this program.    If not, see <http://www.gnu.org/licenses/>.
 
 from argparse import ArgumentParser, ArgumentError
+from datetime import datetime
+from datetime import timedelta
 import sys
 import os
 import re
 import json
 import hashlib, binascii
-from datetime import datetime
-from datetime import timedelta
 import csv
+from xml.etree import ElementTree
+from xml.etree.ElementTree import ParseError
 
 
 #==============================================================================
@@ -33,8 +35,22 @@ DEFAULT_CONFIG_FILEPATH = "config.json"
 # Default configuration; overridden at runtime by loaded config
 CONFIG_DATA = {
     'INPUT': {
+        # CHANGE THESE TO CONTROL WHICH ATTRIBUTES ARE PARSED
+        # IMPORTANT: The last element must be unique, otherwise objects won't be delimited properly
+        'DSQUERY_ATTRS': {
+            'COMPUTER': ['dnshostname', 'operatingsystem', 'operatingsystemversion', 'operatingsystemservicepack', 'lastlogon', 'lastlogontimestamp', 'useraccountcontrol', 'description', 'memberof', 'primarygroupid', 'location', 'objectsid', 'adspath'],
+            'GPO': ['displayname', 'name', 'adspath'],
+            'GROUP': ['samaccountname', 'name', 'distinguishedname', 'objectsid', 'primarygroupid', 'description', 'member', 'adspath'],
+            'OU': ['name', 'managedby', 'description', 'gplink', 'adspath'],
+            'USER': ['samaccountname', 'name', 'distinguishedname', 'lastlogon', 'lastlogontimestamp', 'pwdlastset', 'useraccountcontrol', 'memberof', 'description', 'objectsid', 'primarygroupid', 'adspath']
+        },
         'DATA': {
-            'FILENAME_DATE_FORMAT': '%Y-%m-%d'
+            'FILENAME_DATE_FORMAT': '%Y-%m-%d',
+            'CS_EXPORT': {
+                'FOREIGN_DOMAIN': 'include', # Valid options: 'include', 'ignore'
+                'INVALID_REALM': 'prompt', # Valid options: 'replace', 'prompt', 'warn', 'ignore', 'warn_and_ignore'
+                'POPULATE_COMMENT': 'append' # Valid options: "append", "empty_only", "none"
+            }
         },
         'WORDLIST': 'wordlists\\wordlist.txt'
     },
@@ -54,47 +70,36 @@ CONFIG_DATA = {
         'TIMEFORMAT_LOG': '%Y-%m-%d %H:%M:%S',
         'WRITE_FILE': True
     },
+    'DEBUG': False,
     'VERBOSITY': 1
 }
-
-# CHANGE THESE TO CONTROL WHICH ATTRIBUTES ARE PARSED
-# IMPORTANT: The last element must be unique, otherwise objects won't be delimited properly
-COMPUTER_ATTRIBS = ['dnshostname', 'operatingsystem', 'operatingsystemversion', 'operatingsystemservicepack', 'lastlogon', 'lastlogontimestamp', 'useraccountcontrol', 'description', 'memberof', 'primarygroupid', 'location', 'objectsid', 'adspath']
-
-USER_ATTRIBS = ['samaccountname', 'name', 'distinguishedname', 'lastlogon', 'lastlogontimestamp', 'pwdlastset', 'useraccountcontrol', 'memberof', 'description', 'objectsid', 'primarygroupid', 'adspath']
-
-GROUP_ATTRIBS = ['samaccountname', 'name', 'distinguishedname', 'objectsid', 'primarygroupid', 'description', 'member', 'adspath']
-
-OU_ATTRIBS = ['name', 'managedby', 'description', 'gplink', 'adspath']
-
-GPO_ATTRIBS = ['displayname', 'name', 'adspath']
 
 
 #==============================================================================
 #********                          CONSTANTS                           ********
 #==============================================================================
-DSQUERY_COMPUTERS = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(COMPUTER_ATTRIBS)
+DSQUERY_COMPUTERS = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTER'])
 
-DSQUERY_USERS = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(USER_ATTRIBS)
+DSQUERY_USERS = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USER'])
 
-DSQUERY_GROUPS = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(GROUP_ATTRIBS)
+DSQUERY_GROUPS = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUP'])
 
-DSQUERY_GPOS = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(GPO_ATTRIBS)
+DSQUERY_GPOS = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPO'])
 
-DSQUERY_OUS = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(OU_ATTRIBS)
+DSQUERY_OUS = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OU'])
 
 KV_PATT = re.compile('^(?P<key>.*?): (?P<value>.*)$')
 
 # Types of data supported by Parseltongue
 # These strings must appear at the end of the filename in order to identify the data type
 FILE_TYPE_MAP = {
-    'computers': COMPUTER_ATTRIBS,
+    'computers': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTER'],
     'credentials': ['username', 'plaintext', 'ntlm', 'aes128', 'aes256', 'comment'],
     'dns': ['hostname', 'ip', 'fqdn', 'cname'],
-    'gpos': GPO_ATTRIBS,
-    'groups': GROUP_ATTRIBS,
-    'ous': OU_ATTRIBS,
-    'users': USER_ATTRIBS
+    'gpos': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPO'],
+    'groups': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUP'],
+    'ous': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OU'],
+    'users': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USER']
 }
 
 # Subset of file types which should be merged into 'credentials' data
@@ -104,7 +109,7 @@ FILE_TYPES = sorted(list(FILE_TYPE_MAP.keys()) + CREDENTIAL_TYPES)
 
 LOG_FILEPATH = os.path.join('logs', 'parseltongue_%s.log' % datetime.now().strftime(CONFIG_DATA['LOGGING']['TIMEFORMAT_FILE']))
 
-VERSION = '2.0.0'
+VERSION = '2.1.0'
 
 BANNER_SM = """
 ======================================================================= 
@@ -143,6 +148,8 @@ so that more recent data overwrites older data, if applicable.
 
 Valid File Types:
     - {0}
+
+Parseltongue can handle both XML and text versions of exported Cobalt Strike credentials; however, XML is highly preferred. The regex for the text version will not properly handle plaintext password entries where the username contains a space; this is a limitation of the text export format, which is space-delimited, not a bug with parseltongue. Since Cobalt Strike credentials may contain data from multiple domains, configuration options are provided that allows users to specify how to handle various situations; see the README for more details.
 """.format('\n    - '.join(FILE_TYPES))
 
 DSQUERY_COMMANDS = """
@@ -218,6 +225,15 @@ ntlm_plaintext_map = {}
 #********                          UTILITIES                           ********
 #==============================================================================
 
+def pformat(obj):
+    """
+    Converts the given object into a pretty printed string
+    
+    Args:
+        obj: The object to pretty print
+    """
+    return json.dumps(obj, indent=4, sort_keys=True, default=str)
+
 def print_usage(parser):
     """
     Prints usage information, including examples and sample queries
@@ -230,7 +246,7 @@ def print_usage(parser):
     # Print usage, examples, sample queries, and current config
     # separated by a horizontal line delimiter
     divider = '\n%s\n' % ('-' * 90)
-    config = '\nCURRENT CONFIG:\n' + json.dumps(CONFIG_DATA, indent=4, sort_keys=True)
+    config = '\nCURRENT CONFIG:\n' + pformat(CONFIG_DATA)
     log(divider.join([USAGE_TEXT, EXAMPLES, DSQUERY_COMMANDS, config]))
 
 
@@ -238,7 +254,7 @@ def print_config():
     """
     Prints a horizontal delimiter and the current config
     """
-    log('%s\n\nCURRENT CONFIG:\n\n%s' % ('-' * 90, json.dumps(CONFIG_DATA, indent=4, sort_keys=True)))
+    log('%s\n\nCURRENT CONFIG:\n\n%s' % ('-' * 90, pformat(CONFIG_DATA)))
 
 
 def log(msg, level=1, suppress=False):
@@ -264,6 +280,53 @@ def log(msg, level=1, suppress=False):
         with open(LOG_FILEPATH, 'a') as log_file:
             msg = '\n' if msg == '' else '%s> %s\n' % (datetime.now().strftime(CONFIG_DATA['LOGGING']['TIMEFORMAT_LOG']), msg)
             log_file.writelines(msg)
+
+
+def debug(data, msg=None):
+    """
+    Logs the optional message and value of data, if debugging is enabled
+    
+    Args:
+        data: A string or object whose contents should be written to the log file for debugging
+        msg: An optional human-readable message to provide context to the printed data
+    """
+    if CONFIG_DATA['DEBUG']:
+        if msg is not None:
+            log('[DEBUG] %s' % msg, 0, suppress=True)
+        
+        # Convert data to a str, if necessary
+        if not isinstance(data, str):
+            data = pformat(data)
+        
+        log('\n%s\n' % data, 0, suppress=True)
+
+
+# Source: https://stackoverflow.com/questions/7204805/how-to-merge-dictionaries-of-dictionaries
+def merge_dict(a, b, path=[]):
+    """
+    Merges the second dictionary into the first one
+    
+    Args:
+        a: The first dictionary; values from dictionary 'b' will be merged into this one
+        b: The second dictionary; values from this object will be merged into dictionary 'a'
+        path: A list of keys indicating where the current object falls in the hierarchy of nested objects
+    
+    Returns:
+        Dictionary 'a' with values from 'b' merged into it
+    """
+    for key in b:
+        if key in a:
+            if isinstance(a[key], dict) and isinstance(b[key], dict):
+                merge_dict(a[key], b[key], path + [str(key)])
+            elif a[key] == b[key]:
+                pass # same leaf value
+            else:
+                log('    [*] Overriding default config setting: %s' % '.'.join(path + [str(key)]), 2)
+                a[key] = b[key]
+        else:
+            log('    [-] WARNING: Unused setting %s. Setting may have a typo or be deprecated' % '.'.join(path + [str(key)]), 2)
+            a[key] = b[key]
+    return a
 
 
 def group_input_filepaths(filepaths):
@@ -525,18 +588,27 @@ def enhance_object(obj):
     return obj
 
 
-def merge_creds(username, cred):
+def merge_creds(cred):
     """
     Adds the specified credential data to the data_objects aggregator variable for the
     current domain if the username has not existing data or updates their credentials
     if they do
     
     Args:
-        username: The username for a domain account
         cred: A dictionary containing credentials
     """
     global data_objects
+    
+    debug(cred, 'Credential')
+    
     nt_domain = cred['nt_domain']
+    username = cred['username']
+    
+    # Ensure the NT domain and credentials keys exist
+    if nt_domain not in data_objects:
+        data_objects[nt_domain] = {
+            'credentials': {}
+        }
     
     if username in data_objects[nt_domain]['credentials']:
         data_objects[nt_domain]['credentials'][username].update(cred)
@@ -648,11 +720,27 @@ def parse_dnscmd(filepath, nt_domain):
         
         # Storing the data in a dictionary using the hostname as the key ensures that entries from more recent files will overwrite the previous records
         data_objects[nt_domain]['dns'][name] = obj
+    
+    debug(hostname_map, 'Hostname to IP map')
 
 
 #==============================================================================
 #********                      CREDENTIAL PARSERS                      ********
 #==============================================================================
+
+def parse_credentials(filepath):
+    """
+    Parses Parseltongue credential output
+    
+    Args:
+        filepath: The path to a file containing Parseltongue credential output
+    """
+    with open(filepath, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        
+        for row in reader:
+            merge_creds(row)
+
 
 def parse_hashdump(filepath, nt_domain):
     """
@@ -669,7 +757,7 @@ def parse_hashdump(filepath, nt_domain):
             if ':' in line:
                 (username, rid, lm_hash, nt_hash) = line.lower().split(':')[:4]
                 ntlm = nt_hash.upper()
-                merge_creds(username, {'nt_domain': nt_domain, 'username': username, 'ntlm': ntlm})
+                merge_creds({'nt_domain': nt_domain, 'username': username, 'ntlm': ntlm, 'comment': 'hashdump'})
 
 
 def parse_lsadump(filepath, nt_domain):
@@ -691,12 +779,12 @@ def parse_lsadump(filepath, nt_domain):
                 ntlm = KV_PATT.search(line).groupdict()['value'].upper()
                 
                 if ntlm != '':
-                    merge_creds(username, {'nt_domain': nt_domain, 'username': username, 'ntlm': ntlm})
+                    merge_creds({'nt_domain': nt_domain, 'username': username, 'ntlm': ntlm, 'comment': 'lsadump'})
                 
                 username = ''
 
 
-def parse_export(filepath, nt_domain):
+def parse_cs_export(filepath, nt_domain):
     """
     Parses exported Cobalt Strike credentials into a dictionary
     
@@ -706,34 +794,126 @@ def parse_export(filepath, nt_domain):
     """
     log('    [*] Parsing Cobalt Strike credential export from: %s' % filepath)
     
-    NTLM_PATT = re.compile('^(?P<realm>.*?)\\\\(?P<username>.*?):::(?P<ntlm>[a-fA-F0-9]{32}):::$')
-    PLAIN_PATT = re.compile('^(?P<realm>.*)\\\\(?P<username>.*?) (?P<plaintext>.*)$')
-    
-    with open(filepath, 'r') as hashdump:
-        for line in hashdump.readlines():
-            line = line.strip()
+    # Attempt to parse the input file as XML; if it throws a 
+    # ParseError assume it is a text export
+    try:
+        tree = ElementTree.parse(filepath)
+        credentials = tree.getroot()
+        
+        log('        [*] Auto-detected Cobalt Strike XML export', 2)
+        
+        # Save the invalid domain handling option for convenient access
+        cs_export_settings = CONFIG_DATA['INPUT']['DATA']['CS_EXPORT']
+        
+        NTLM_PATT = re.compile('^[A-Fa-f0-9]{32}$')
+        
+        # Store user provided DNS to NT domain mapping for future use
+        dns_to_nt_map = {}
+        
+        for entry in credentials.iter('entry'):
+            # Convert entry back to XML for debugging
+            debug('    ' + ElementTree.tostring(entry).decode('utf-8').replace('\t', '    ').strip(), 'XML entry')
             
-            data = NTLM_PATT.search(line)
+            realm = entry.find('realm').text.upper()
             
-            if data is not None:
-                data = data.groupdict()
-                realm = data['realm']
-                username = data['username'].lower()
-                ntlm = data['ntlm'].upper()
-                
-                if realm == nt_domain:
-                    merge_creds(username, {'nt_domain': nt_domain, 'username': username, 'ntlm': ntlm})
+            # Convert DNS domain to NT domain, if applicable and possible
+            if realm in dns_to_nt_map:
+                log('        [*] Replacing invalid realm %s with %s' % (realm, dns_to_nt_map[realm]), 2)
+                realm = dns_to_nt_map[realm]
+            
+            cred = {
+                'nt_domain': realm,
+                'username': entry.find('user').text,
+                'comment': entry.find('note').text if entry.find('note').text else ''
+            }
+            
+            password = entry.find('password').text
+            
+            # Determine if the 'password' element is an NTLM hash or a plaintext password
+            if NTLM_PATT.match(password):
+                cred['ntlm'] = password.upper()
             else:
-                data = PLAIN_PATT.search(line)
+                # generate_ntlm() will store the plaintext in the ntlm_plaintext_map
+                # merge_creds() will add the plaintext, so no need to store it here
+                cred['ntlm'] = generate_ntlm(password)
+            
+            # IMPORTANT: Domain manipulation takes place after the password manipulation to ensure that any plaintext
+            # passwords encountered still make it into the ntlm_plaintext_map for cracking and wordlist output
+            
+            # Determine whether the realm is a DNS domain rather than an NT one
+            if '.' in cred['nt_domain']:
+                setting = cs_export_settings['INVALID_REALM']
+                
+                if setting == 'replace':
+                    log('        [*] Replacing invalid realm %s with %s' % (realm, nt_domain), 2)
+                    cred['nt_domain'] = nt_domain
+                elif setting == 'prompt':
+                    while '.' in cred['nt_domain']:
+                        log('        [*] %s is not a valid NT domain' % cred['nt_domain'])
+                        cred['nt_domain'] = input('        [?] Please enter the NT domain that matches %s: ' % realm).upper()
+                        
+                        # Reset to the original value if user did not provide input
+                        if cred['nt_domain'] == '':
+                            cred['nt_domain'] = realm
+                    
+                    log('        [*] Replacing invalid realm %s with %s' % (realm, cred['nt_domain']), 2)
+                    
+                    # Add it to a map for future reference
+                    dns_to_nt_map[realm] = cred['nt_domain']
+                elif 'warn' in setting:
+                    log('        [-] WARNING: %s is not a valid NT domain' % cred['nt_domain'])
+                
+                # If set to ignore, skip this entry and continue with the next
+                if 'ignore' in setting:
+                    continue
+            
+            # Skip foreign realms (i.e., ones that do not match the NT domain 
+            # specified in the filename) if configured to do so
+            if cred['nt_domain'] != nt_domain and cs_export_settings['FOREIGN_DOMAIN'] == 'ignore':
+                continue
+            
+            # Optionally save the source and host information in the comment
+            source = entry.find('source').text
+            host = entry.find('host').text
+            src_host_info = source if host is None else '%s on %s' % (source, host)
+            
+            if cred['comment'] == '' and cs_export_settings['POPULATE_COMMENT'] in ['append', 'empty_only']:
+                cred['comment'] = src_host_info
+            elif cred['comment'] != '' and cs_export_settings['POPULATE_COMMENT'] == 'append':
+                cred['comment'] += '; %s' % src_host_info
+            
+            merge_creds(cred)
+    except ParseError:
+        log('        [*] Auto-detected Cobalt Strike text export', 2)
+    
+        NTLM_PATT = re.compile('^(?P<realm>.*?)\\\\(?P<username>.*?):::(?P<ntlm>[a-fA-F0-9]{32}):::$')
+        PLAIN_PATT = re.compile('^(?P<realm>.*)\\\\(?P<username>.*?) (?P<plaintext>.*)$')
+        
+        with open(filepath, 'r') as in_file:
+            for line in in_file.readlines():
+                line = line.strip()
+                
+                data = NTLM_PATT.search(line)
                 
                 if data is not None:
                     data = data.groupdict()
                     realm = data['realm']
                     username = data['username'].lower()
-                    plaintext = data['plaintext']
+                    ntlm = data['ntlm'].upper()
                     
                     if realm == nt_domain:
-                        merge_creds(username, {'nt_domain': nt_domain, 'username': username, 'ntlm': generate_ntlm(plaintext), 'plaintext': plaintext})
+                        merge_creds({'nt_domain': nt_domain, 'username': username, 'ntlm': ntlm, 'comment': 'cs_export'})
+                else:
+                    data = PLAIN_PATT.search(line)
+                    
+                    if data is not None:
+                        data = data.groupdict()
+                        realm = data['realm']
+                        username = data['username'].lower()
+                        plaintext = data['plaintext']
+                        
+                        if realm == nt_domain:
+                            merge_creds({'nt_domain': nt_domain, 'username': username, 'ntlm': generate_ntlm(plaintext), 'plaintext': plaintext, 'comment': 'cs_export'})
 
 
 def parse_dcsync(filepath, nt_domain):
@@ -746,25 +926,26 @@ def parse_dcsync(filepath, nt_domain):
     """
     log('    [*] Parsing dcsync output from: %s' % filepath)
     
-    obj = {'nt_domain': nt_domain}
+    cred = {'nt_domain': nt_domain}
     
     with open(filepath, 'r') as lsadump:
         for line in lsadump.readlines():
             if 'SAM Username         : ' in line:
-                obj['username'] = KV_PATT.search(line).groupdict()['value'].lower()
+                cred['username'] = KV_PATT.search(line).groupdict()['value'].lower()
             else:
                 # Ensure the username is set before parsing hashes (prevents entry getting overwritten with values from OldCredentials
-                if 'username' in obj:
+                if 'username' in cred:
                     if 'Hash NTLM: ' in line:
-                        obj['ntlm'] = KV_PATT.search(line).groupdict()['value'].upper()
+                        cred['ntlm'] = KV_PATT.search(line).groupdict()['value'].upper()
                     elif 'aes256_hmac       (4096) :' in line:
-                        obj['aes256'] = KV_PATT.search(line).groupdict()['value'].upper()
+                        cred['aes256'] = KV_PATT.search(line).groupdict()['value'].upper()
                     elif 'aes128_hmac       (4096) :' in line:
-                        obj['aes128'] = KV_PATT.search(line).groupdict()['value'].upper()
-                        merge_creds(obj['username'], obj)
+                        cred['aes128'] = KV_PATT.search(line).groupdict()['value'].upper()
+                        cred['comment'] = 'dcsync'
+                        merge_creds(cred)
                         
                         # Entry is finish, reset object; require username to get reset before parsing more hashes so that aes256_hmac and aes128_hmac don't get overwritte by old credentials
-                        obj = {'nt_domain': nt_domain}
+                        cred = {'nt_domain': nt_domain}
 
 
 def parse_logonpasswords(filepath, nt_domain):
@@ -777,7 +958,7 @@ def parse_logonpasswords(filepath, nt_domain):
     """
     log('    [*] Parsing logonpasswords output from: %s' % filepath)
     
-    obj = {'nt_domain': nt_domain}
+    cred = {'nt_domain': nt_domain}
     usernames = []
     realmified_username = ''
     
@@ -787,45 +968,46 @@ def parse_logonpasswords(filepath, nt_domain):
                 username = KV_PATT.search(line).groupdict()['value'].lower()
                 
                 if username not in ['(null)', 'local service', 'dwm-1']:
-                    obj['username'] = username
+                    cred['username'] = username
                     
                     # Initialize NTLM so password cracker output doesn't get angry
-                    obj['ntlm'] = ''
-            elif 'username' in obj:
+                    cred['ntlm'] = ''
+            elif 'username' in cred:
                 # If there was no valid username for the block, ignore everything else
                 if 'Domain            : ' in line:
-                    obj['nt_domain'] = line.split(':')[1].strip()
-                    realmified_username = '%s\%s' % (obj['nt_domain'], obj['username'])
+                    cred['nt_domain'] = line.split(':')[1].strip()
+                    realmified_username = '%s\%s' % (cred['nt_domain'], cred['username'])
                 elif 'NTLM     : ' in line:
-                    obj['ntlm'] = KV_PATT.search(line).groupdict()['value'].upper()
-                elif 'Password : ' in line and not obj['username'].endswith('$'):
+                    cred['ntlm'] = KV_PATT.search(line).groupdict()['value'].upper()
+                elif 'Password : ' in line and not cred['username'].endswith('$'):
                     # Save plaintext password if it's not null or for a computer account (< 128)
                     # Use regex to make sure we get the entire password, even if it ends with a space
                     password = KV_PATT.search(line).groupdict()['value']
                     
                     if password != '(null)' and len(password) < 128:
-                        obj['plaintext'] = password
+                        cred['plaintext'] = password
                         
                         # Generate NTLM to ensure correct mapping and to save the 
                         # association to the global ntlm_plaintext_map
-                        obj['ntlm'] = generate_ntlm(password)
+                        cred['ntlm'] = generate_ntlm(password)
                 elif 'credman :' in line:
                     # Last line of the entry, save the current object to the dictionary if the hash was populated, and reset the object for the next entry
-                    if obj['ntlm'] != '':
+                    if cred['ntlm'] != '':
                         # Newer entries appear at the top of the file, so only keep the
                         # first entry for each user (include the domain in case you have
                         # the same username from different domains)
                         if realmified_username not in usernames:
-                            merge_creds(obj['username'], obj)
+                            cred['comment'] = 'logonpasswords'
+                            merge_creds(cred)
                             
                             # Add the username to a list so we don't overwrite their information using subsequent entries
                             usernames.append(realmified_username)
                         else:
                             # Warn user if a duplicate is detected; only saving the first of each entry "should" work...but doesn't hurt to manually verify
                             print('')
-                            log('    [*] IMPORTANT: Duplicate username (%s) detected in logonpasswords; manually verify which creds are accurate\n' % obj['username'], 0)
+                            log('    [-] WARNING: Duplicate username (%s) detected in logonpasswords; manually verify which creds are accurate\n' % cred['username'], 0)
                     
-                    obj = {'nt_domain': nt_domain}
+                    cred = {'nt_domain': nt_domain}
 
 
 #=============================================================================
@@ -873,6 +1055,7 @@ def parse_ad_objects(data_type, filepath, nt_domain, fieldnames):
                     if key == fieldnames[-1]:
                         obj = enhance_object(obj)
                         data_objects[nt_domain][data_type][obj['id']] = obj
+                        debug(obj, 'AD object (%s)' % data_type)
                         obj = {'nt_domain': nt_domain}
 
 
@@ -924,7 +1107,8 @@ def load_config(config_path, verbosity):
             loaded_config = json.load(infile)
             
             # Override config with loaded config; maintain any defaults not specified in the loaded config to ensure they exist
-            CONFIG_DATA.update(loaded_config)
+            merge_dict(CONFIG_DATA, loaded_config)
+            #CONFIG_DATA.update(loaded_config)
         
         # If specified as a command-line argument, reset verbosity prior to calls to log()
         if verbosity is not None:
@@ -954,7 +1138,8 @@ def load_wordlist(filepath):
         # Read all plaintext passwords from file, generate NTLM hashes and store them in ntlm_plaintext_map
         with open(filepath, 'r') as in_file:
             for password in in_file.readlines():
-                generate_ntlm(password.strip())
+                # Don't strip spaces because Windows allows spaces at the end of passwords... :-/
+                generate_ntlm(password.strip('\t\n'))
         
         return True
     
@@ -1118,6 +1303,7 @@ def main():
     parser = ArgumentParser(description='Parses Windows system data and outputs CSV files to facilitate analysis')
     parser.add_argument('filepaths', metavar='data_filepath', nargs='*', help='Paths to files containing system data (e.g., dsquery, dnscmd, etc.)')
     parser.add_argument('-c', '--config', dest='config_filepath', default=DEFAULT_CONFIG_FILEPATH, help='Path to config file')
+    parser.add_argument('--debug', dest='debug', action='store_true', help='Enable debugging output to log file')
     parser.add_argument('-d', '--delimiter', dest='delimiter', help='Character to delimit multiple objects (overrides config file setting)')
     parser.add_argument('-g', '--generate-config', dest='gen_config', action='store_true', help='Generate a default config file')
     parser.add_argument('-o', '--output', dest='output_dir', help='Output directory (overrides config file setting)')
@@ -1127,6 +1313,8 @@ def main():
     parser.add_argument('-w', '--wordlist', dest='wordlist', help='A wordlist file (one plaintext password per line) OR a directory containing wordlist files; used for rudimentary password cracking ')
     args = parser.parse_args()
     
+    debug(args, 'Parsed arguments')
+    
     if args.show_dsqueries:
         print(DSQUERY_COMMANDS)
         sys.exit(0)
@@ -1135,6 +1323,8 @@ def main():
     if len(sys.argv) == 1:
         print_usage(parser)
         sys.exit(0)
+    
+    debug(CONFIG_DATA, 'Config data prior to arg parsing')
     
     # Set the verbosity immediately so it takes effect before config parsing functions
     if args.verbosity is not None:
@@ -1151,6 +1341,10 @@ def main():
     load_config(args.config_filepath, args.verbosity)
     
     # Override config data with command-line arguments
+    if args.debug:
+        CONFIG_DATA['DEBUG'] = args.debug
+    
+    # Override config data with command-line arguments
     if args.output_dir:
         CONFIG_DATA['OUTPUT']['DATA']['DIR'] = args.output_dir
     
@@ -1165,6 +1359,8 @@ def main():
             log('[-] ERROR: Wordlist %s does not exist' % args.wordlist, 0)
             sys.exit(1)
     
+    debug(CONFIG_DATA, 'Config data after to arg parsing')
+    
     if args.update_config:
         save_config(args.config_filepath)
     
@@ -1178,10 +1374,14 @@ def main():
     if CONFIG_DATA['INPUT']['WORDLIST']:
         load_wordlists()
     
+    debug(ntlm_plaintext_map, 'Wordlist loaded into ntlm_plaintext_map')
+    
     log('[*] Organizing input files...', 0)
     
     # Read in all the arguments, group by NT domain
     data_files = group_input_filepaths(args.filepaths)
+    
+    debug(data_files, 'Input filenames grouped by domain and type')
     
     # Add an extra newline for readability
     log('[+] Finished organizing input files...\n')
@@ -1196,13 +1396,15 @@ def main():
                 filepath = file_dict['path']
                 type = file_dict['type']
                 
-                if type == 'hashdump':
+                if type == 'credentials':
+                    parse_credentials(filepath)
+                elif type == 'hashdump':
                     parse_hashdump(filepath, nt_domain)
                 elif type == 'lsadump':
                     parse_lsadump(filepath, nt_domain)
                 elif type == 'cs_export':
                     # Parse Cobalt Strike credentials export
-                    parse_export(filepath, nt_domain)
+                    parse_cs_export(filepath, nt_domain)
                 elif type == 'dcsync':
                     parse_dcsync(filepath, nt_domain)
                 elif type == 'logonpasswords':
@@ -1228,11 +1430,15 @@ def main():
     
     log('[*] Parsing complete; writing output...', 0)
     
+    debug(data_objects, 'All parsed data')
+    
     # Write out parsed data
     for nt_domain in data_objects:
         for type in FILE_TYPE_MAP:
             if type in data_objects[nt_domain]:
                 write_output(nt_domain, type)
+    
+    debug(ntlm_plaintext_map, 'Final NTLM to plaintext mapping')
     
     # Output plaintext wordlist
     write_wordlist()

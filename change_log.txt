@@ -13,6 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Identifed a bug where ElementTree fails to parse files that contain fields with '&' in them; will look into other XML parsing libraries 
 
 
+## [2.1.2]
+## Changed
+- Added an 's' to dsquery_attrs config options for consistency (simplifies refactored code)
+
+### Fixed
+- Additional bug with loading dsquery attributes from config. The previous change fixed dsquery command output but failed to change the fieldnames in the CSV output; this is now fixed.
+- A bug where the logging output directory from the config file wasn't being applied
+
+
 ## [2.1.1]
 ### Added
 - Additional error message to parse_cs_export() to warn users about the ElementTree bug listed above (i.e., ElementTree throws an "invalid token" parsing error if it sees elements containing '&')

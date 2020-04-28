@@ -1,7 +1,7 @@
 {
     "INPUT": {
         "DSQUERY_ATTRS": {
-            "COMPUTER": [
+            "COMPUTERS": [
                 "dnshostname",
                 "operatingsystem",
                 "operatingsystemversion",
@@ -16,12 +16,12 @@
                 "objectsid",
                 "adspath"
             ],
-            "GPO": [
+            "GPOS": [
                 "displayname",
                 "name",
                 "adspath"
             ],
-            "GROUP": [
+            "GROUPS": [
                 "samaccountname",
                 "name",
                 "distinguishedname",
@@ -31,14 +31,14 @@
                 "member",
                 "adspath"
             ],
-            "OU": [
+            "OUS": [
                 "name",
                 "managedby",
                 "description",
                 "gplink",
                 "adspath"
             ],
-            "USER": [
+            "USERS": [
                 "samaccountname",
                 "adspath"
             ]

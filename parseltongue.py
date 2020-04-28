@@ -38,11 +38,11 @@ CONFIG_DATA = {
         # CHANGE THESE TO CONTROL WHICH ATTRIBUTES ARE PARSED
         # IMPORTANT: The last element must be unique, otherwise objects won't be delimited properly
         'DSQUERY_ATTRS': {
-            'COMPUTER': ['dnshostname', 'operatingsystem', 'operatingsystemversion', 'operatingsystemservicepack', 'lastlogon', 'lastlogontimestamp', 'useraccountcontrol', 'description', 'memberof', 'primarygroupid', 'location', 'objectsid', 'adspath'],
-            'GPO': ['displayname', 'name', 'adspath'],
-            'GROUP': ['samaccountname', 'name', 'distinguishedname', 'objectsid', 'primarygroupid', 'description', 'member', 'adspath'],
-            'OU': ['name', 'managedby', 'description', 'gplink', 'adspath'],
-            'USER': ['samaccountname', 'name', 'distinguishedname', 'lastlogon', 'lastlogontimestamp', 'pwdlastset', 'useraccountcontrol', 'memberof', 'description', 'objectsid', 'primarygroupid', 'adspath']
+            'COMPUTERS': ['dnshostname', 'operatingsystem', 'operatingsystemversion', 'operatingsystemservicepack', 'lastlogon', 'lastlogontimestamp', 'useraccountcontrol', 'description', 'memberof', 'primarygroupid', 'location', 'objectsid', 'adspath'],
+            'GPOS': ['displayname', 'name', 'adspath'],
+            'GROUPS': ['samaccountname', 'name', 'distinguishedname', 'objectsid', 'primarygroupid', 'description', 'member', 'adspath'],
+            'OUS': ['name', 'managedby', 'description', 'gplink', 'adspath'],
+            'USERS': ['samaccountname', 'name', 'distinguishedname', 'lastlogon', 'lastlogontimestamp', 'pwdlastset', 'useraccountcontrol', 'memberof', 'description', 'objectsid', 'primarygroupid', 'adspath']
         },
         'DATA': {
             'FILENAME_DATE_FORMAT': '%Y-%m-%d',
@@ -70,7 +70,7 @@ CONFIG_DATA = {
         'TIMEFORMAT_LOG': '%Y-%m-%d %H:%M:%S',
         'WRITE_FILE': True
     },
-    'DEBUG': False,
+    'DEBUG': True,
     'VERBOSITY': 1
 }
 
@@ -84,13 +84,13 @@ KV_PATT = re.compile('^(?P<key>.*?): (?P<value>.*)$')
 # Types of data supported by Parseltongue
 # These strings must appear at the end of the filename in order to identify the data type
 FILE_TYPE_MAP = {
-    'computers': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTER'],
+    'computers': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTERS'],
     'credentials': ['username', 'plaintext', 'ntlm', 'aes128', 'aes256', 'comment'],
     'dns': ['hostname', 'ip', 'fqdn', 'cname'],
-    'gpos': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPO'],
-    'groups': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUP'],
-    'ous': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OU'],
-    'users': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USER']
+    'gpos': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPOS'],
+    'groups': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUPS'],
+    'ous': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OUS'],
+    'users': CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USERS']
 }
 
 # Subset of file types which should be merged into 'credentials' data
@@ -98,9 +98,7 @@ CREDENTIAL_TYPES = ['cs_export', 'dcsync', 'hashdump', 'logonpasswords', 'lsadum
 
 FILE_TYPES = sorted(list(FILE_TYPE_MAP.keys()) + CREDENTIAL_TYPES)
 
-LOG_FILEPATH = os.path.join('logs', 'parseltongue_%s.log' % datetime.now().strftime(CONFIG_DATA['LOGGING']['TIMEFORMAT_FILE']))
-
-VERSION = '2.1.1'
+VERSION = '2.1.2'
 
 BANNER_SM = """
 ======================================================================= 
@@ -324,11 +322,13 @@ def log(msg, level=1, suppress=False):
         print(msg)
     
     if CONFIG_DATA['LOGGING']['WRITE_FILE'] and level <= CONFIG_DATA['LOGGING']['VERBOSITY']:
+        log_filepath = os.path.join(CONFIG_DATA['LOGGING']['OUTPUT_DIR'], 'parseltongue_%s.log' % datetime.now().strftime(CONFIG_DATA['LOGGING']['TIMEFORMAT_FILE']))
+        
         # Ensure the output directory exists
-        output_dir = os.path.dirname(LOG_FILEPATH)
+        output_dir = os.path.dirname(log_filepath)
         os.makedirs(output_dir, exist_ok = True)
         
-        with open(LOG_FILEPATH, 'a') as log_file:
+        with open(log_filepath, 'a') as log_file:
             msg = '\n' if msg == '' else '%s> %s\n' % (datetime.now().strftime(CONFIG_DATA['LOGGING']['TIMEFORMAT_LOG']), msg)
             log_file.writelines(msg)
 
@@ -1070,14 +1070,14 @@ def parse_logonpasswords(filepath, nt_domain):
 #********                       DSQUERY PARSER                        ********
 #=============================================================================
 
-def parse_ad_objects(data_type, filepath, nt_domain, fieldnames):
+def parse_ad_objects(data_type, filepath, nt_domain):
     """
     Reads output from a dsquery command and parses into a list of dictionaries, each representing an AD object; attempts to enhance the raw data
     
     Args:
+        data_type: The type of dsquery object being parsed
         filepath: The path to a file containing output from a dsquery command
         nt_domain: NT domain
-        fieldnames: The list of expected object attributes; the last object in the list is used to delimit object entries; it MUST exist AND be unique
     """
     global data_objects
     log('    [*] Parsing dsquery output from: %s' % filepath)
@@ -1097,6 +1097,8 @@ def parse_ad_objects(data_type, filepath, nt_domain, fieldnames):
                 data = data.groupdict()
                 key = data['key'].lower()
                 value = data['value'].strip()
+                
+                fieldnames = FILE_TYPE_MAP[data_type]
                 
                 # Sanity check to prevent the CSV reader from getting angry that the data contains fields not in fieldnames
                 if key in fieldnames:
@@ -1263,6 +1265,8 @@ def write_output(nt_domain, data_type):
         
         fieldnames = FILE_TYPE_MAP[data_type]
         
+        debug(fieldnames, 'Output fieldnames')
+        
         # Modify fieldnames, if applicable
         if data_type == 'users':
             fieldnames += ['plaintext', 'ntlm', 'aes128', 'aes256', 'comment']
@@ -1339,6 +1343,7 @@ def main():
     sorts and processes input files, and writes processed output
     """
     global CONFIG_DATA
+    global FILE_TYPE_MAP
     
     term_width = os.get_terminal_size().columns
     
@@ -1426,6 +1431,11 @@ def main():
         print_config()
         sys.exit(0)
     
+    # Update FILE_TYPE_MAP in case config file specifies custom fields
+    # IMPORTANT: Be sure to add any new configurable file types
+    for type in ['computers', 'gpos', 'groups', 'ous', 'users']:
+        FILE_TYPE_MAP[type] = CONFIG_DATA['INPUT']['DSQUERY_ATTRS'][type.upper()]
+    
     # Import a list of plaintext passwords for basic password cracking
     if CONFIG_DATA['INPUT']['WORDLIST']:
         load_wordlists()
@@ -1466,10 +1476,13 @@ def main():
                 elif type == 'logonpasswords':
                     parse_logonpasswords(filepath, nt_domain)
         
-        # IMPORTANT: Loop through in the specified order so GPO and DNS data are parsed before computers
+        # IMPORTANT: Create an ordered list of file types so that data needed to enhance later data types is parsed first
         # This is necessary so the computer and OU objects can be enhanced
-        # If you add new data types to the FILE_TYPE_MAP, you must add them to this list as well, in order for the script to parse them
-        for type in ['dns', 'gpos', 'groups', 'ous', 'computers', 'users']:
+        independent_file_types = ['dns', 'gpo']
+        
+        ordered_file_types = independent_file_types + [type for type in FILE_TYPE_MAP if type not in independent_file_types]
+        
+        for type in ordered_file_types:
             if type in data_files[nt_domain]:
                 # Loop through all files of the given type, sorted by date
                 for file_dict in sorted(data_files[nt_domain][type], key = lambda i: i['date']):
@@ -1479,7 +1492,7 @@ def main():
                         parse_dnscmd(filepath, nt_domain)
                     else:
                         # Parse Active Directory objects (e.g., dsquery output)
-                        parse_ad_objects(type, filepath, nt_domain, FILE_TYPE_MAP[type])
+                        parse_ad_objects(type, filepath, nt_domain)
         
         # Add an extra newline for readability
         log('[+] Finished parsing the %s domain\n' % nt_domain, 0)

@@ -94,11 +94,11 @@ The following are the default configuration settings. If any command-line argume
 {
     "INPUT": {
         "DSQUERY_ATTRS": {
-            "COMPUTER": ["dnshostname", "operatingsystem", "operatingsystemversion", "operatingsystemservicepack", "lastlogon", "lastlogontimestamp", "useraccountcontrol", "description", "memberof", "primarygroupid", "location", "objectsid", "adspath"],
-            "GPO": ["displayname", "name", "adspath"],
-            "GROUP": ["samaccountname", "name", "distinguishedname", "objectsid", "primarygroupid", "description", "member", "adspath"],
-            "OU": ["name", "managedby", "description", "gplink", "adspath"],
-            "USER": ["samaccountname", "name", "distinguishedname", "lastlogon", "lastlogontimestamp", "pwdlastset", "useraccountcontrol", "memberof", "description", "objectsid", "primarygroupid", "adspath"]
+            "COMPUTERS": ["dnshostname", "operatingsystem", "operatingsystemversion", "operatingsystemservicepack", "lastlogon", "lastlogontimestamp", "useraccountcontrol", "description", "memberof", "primarygroupid", "location", "objectsid", "adspath"],
+            "GPOS": ["displayname", "name", "adspath"],
+            "GROUPS": ["samaccountname", "name", "distinguishedname", "objectsid", "primarygroupid", "description", "member", "adspath"],
+            "OUS": ["name", "managedby", "description", "gplink", "adspath"],
+            "USERS": ["samaccountname", "name", "distinguishedname", "lastlogon", "lastlogontimestamp", "pwdlastset", "useraccountcontrol", "memberof", "description", "objectsid", "primarygroupid", "adspath"]
         },
         "DATA": {
             "FILENAME_DATE_FORMAT": "%Y-%m-%d",
@@ -139,11 +139,11 @@ There are three main sections (Input, Output, and Logging) that group settings r
         # Change the items in this list to control which attributes Parseltongue attempts to parse
         # IMPORTANT: The last element must be unique, otherwise objects won't be delimited properly
         "DSQUERY_ATTRS": {
-            "COMPUTER": ["dnshostname", "operatingsystem", "operatingsystemversion", "operatingsystemservicepack", "lastlogon", "lastlogontimestamp", "useraccountcontrol", "description", "memberof", "primarygroupid", "location", "objectsid", "adspath"],
-            "GPO": ["displayname", "name", "adspath"],
-            "GROUP": ["samaccountname", "name", "distinguishedname", "objectsid", "primarygroupid", "description", "member", "adspath"],
-            "OU": ["name", "managedby", "description", "gplink", "adspath"],
-            "USER": ["samaccountname", "name", "distinguishedname", "lastlogon", "lastlogontimestamp", "pwdlastset", "useraccountcontrol", "memberof", "description", "objectsid", "primarygroupid", "adspath"]
+            "COMPUTERS": ["dnshostname", "operatingsystem", "operatingsystemversion", "operatingsystemservicepack", "lastlogon", "lastlogontimestamp", "useraccountcontrol", "description", "memberof", "primarygroupid", "location", "objectsid", "adspath"],
+            "GPOS": ["displayname", "name", "adspath"],
+            "GROUPS": ["samaccountname", "name", "distinguishedname", "objectsid", "primarygroupid", "description", "member", "adspath"],
+            "OUS": ["name", "managedby", "description", "gplink", "adspath"],
+            "USERS": ["samaccountname", "name", "distinguishedname", "lastlogon", "lastlogontimestamp", "pwdlastset", "useraccountcontrol", "memberof", "description", "objectsid", "primarygroupid", "adspath"]
         },
         "DATA": {
             # This specifies the date format for input data filenames 

@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add a configuration option to specify the order of elements in the input filename (e.g., specify the data type before the date)
 
 
+## [2.1.3]
+### Fxied
+- Added missing 'S' from config setting names that were preventing the dsquery commands from being displayed
+
+
 ## [2.1.2]
 ## Changed
 - Modified how parse_cs_export() auto-detects the file format. Previously, it attempted to parse as XML and assumed it was text if parsing failed. Unfortunately, auto-detection (and therefore parsing) would fail if the parser encountered any error, such as an invalid token. Auto-detection now reads the first line of the file and compares it against the format of the XML export, a much more reliable check.

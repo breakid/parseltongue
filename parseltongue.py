@@ -98,7 +98,7 @@ CREDENTIAL_TYPES = ['cs_export', 'dcsync', 'hashdump', 'logonpasswords', 'lsadum
 
 FILE_TYPES = sorted(list(FILE_TYPE_MAP.keys()) + CREDENTIAL_TYPES)
 
-VERSION = '2.1.2'
+VERSION = '2.1.3'
 
 BANNER_SM = """
 ======================================================================= 
@@ -212,15 +212,15 @@ def get_dsquery_commands_str():
     This is a separate function (as opposed to the hardcoded USAGE and EXAMPLES strings because the command 
     attributes can be set via the config file so this string must be dynamically generated
     """
-    computers = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTER'])
+    computers = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTERS'])
 
-    users = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USER'])
+    users = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USERS'])
 
-    groups = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUP'])
+    groups = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUPS'])
 
-    gpos = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPO'])
+    gpos = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPOS'])
 
-    ous = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OU'])
+    ous = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OUS'])
     
     return """
 DSQUERY COMMANDS:
@@ -267,15 +267,15 @@ def print_dsquery_commands():
     """
     Returns a string containing the dsquery commands from which Parseltongue expects to receive output
     """
-    computers = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTER'])
+    computers = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTERS'])
     
-    users = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USER'])
+    users = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USERS'])
     
-    groups = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUP'])
+    groups = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUPS'])
     
-    gpos = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPO'])
+    gpos = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPOS'])
     
-    ous = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OU'])
+    ous = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OUS'])
     
     template = """
 DSQUERY COMMANDS:

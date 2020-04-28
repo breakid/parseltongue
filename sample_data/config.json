@@ -40,16 +40,6 @@
             ],
             "USER": [
                 "samaccountname",
-                "name",
-                "distinguishedname",
-                "lastlogon",
-                "lastlogontimestamp",
-                "pwdlastset",
-                "useraccountcontrol",
-                "memberof",
-                "description",
-                "objectsid",
-                "primarygroupid",
                 "adspath"
             ]
         },

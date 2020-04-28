@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add configuration option to output a master credential file spanning all domains
 - Add a configuration option to specify the order of elements in the input filename (e.g., specify the data type before the date)
 
+### Fixed
+- Identifed a bug where ElementTree fails to parse files that contain fields with '&' in them; will look into other XML parsing libraries 
+
+
+## [2.1.1]
+### Added
+- Additional error message to parse_cs_export() to warn users about the ElementTree bug listed above (i.e., ElementTree throws an "invalid token" parsing error if it sees elements containing '&')
+
+### Changed
+- Changed verbosity level for "Object contains no name field" warning in enhance_object() to level 2 to avoid spamming users on the default setting
+
+### Fixed
+- Fixed a bug where the dsquery commands wouldn't get updated based on the config file because they were shown before the config was loaded
+
 
 ## [2.1.0]
 ### Added

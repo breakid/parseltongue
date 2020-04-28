@@ -78,15 +78,6 @@ CONFIG_DATA = {
 #==============================================================================
 #********                          CONSTANTS                           ********
 #==============================================================================
-DSQUERY_COMPUTERS = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTER'])
-
-DSQUERY_USERS = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USER'])
-
-DSQUERY_GROUPS = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUP'])
-
-DSQUERY_GPOS = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPO'])
-
-DSQUERY_OUS = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OU'])
 
 KV_PATT = re.compile('^(?P<key>.*?): (?P<value>.*)$')
 
@@ -109,7 +100,7 @@ FILE_TYPES = sorted(list(FILE_TYPE_MAP.keys()) + CREDENTIAL_TYPES)
 
 LOG_FILEPATH = os.path.join('logs', 'parseltongue_%s.log' % datetime.now().strftime(CONFIG_DATA['LOGGING']['TIMEFORMAT_FILE']))
 
-VERSION = '2.1.0'
+VERSION = '2.1.1'
 
 BANNER_SM = """
 ======================================================================= 
@@ -151,25 +142,6 @@ Valid File Types:
 
 Parseltongue can handle both XML and text versions of exported Cobalt Strike credentials; however, XML is highly preferred. The regex for the text version will not properly handle plaintext password entries where the username contains a space; this is a limitation of the text export format, which is space-delimited, not a bug with parseltongue. Since Cobalt Strike credentials may contain data from multiple domains, configuration options are provided that allows users to specify how to handle various situations; see the README for more details.
 """.format('\n    - '.join(FILE_TYPES))
-
-DSQUERY_COMMANDS = """
-DSQUERY COMMANDS:
-
-    COMPUTERS:
-        {0}
-
-    USERS:
-        {1}
-
-    GROUPS:
-        {2}
-
-    OUs:
-        {3}
-
-    GPOs:
-        {4}
-""".format(DSQUERY_COMPUTERS, DSQUERY_USERS, DSQUERY_GROUPS, DSQUERY_OUS, DSQUERY_GPOS)
 
 EXAMPLES = """
 EXAMPLES:
@@ -234,6 +206,44 @@ def pformat(obj):
     """
     return json.dumps(obj, indent=4, sort_keys=True, default=str)
 
+
+def get_dsquery_commands_str():
+    """
+    Returns a string containing the dsquery commands from which Parseltongue expects to receive output
+    
+    This is a separate function (as opposed to the hardcoded USAGE and EXAMPLES strings because the command 
+    attributes can be set via the config file so this string must be dynamically generated
+    """
+    computers = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTER'])
+
+    users = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USER'])
+
+    groups = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUP'])
+
+    gpos = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPO'])
+
+    ous = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OU'])
+    
+    return """
+DSQUERY COMMANDS:
+
+    COMPUTERS:
+        {0}
+
+    USERS:
+        {1}
+
+    GROUPS:
+        {2}
+
+    OUs:
+        {3}
+
+    GPOs:
+        {4}
+    """.format(computers, users, groups, ous, gpos)
+
+
 def print_usage(parser):
     """
     Prints usage information, including examples and sample queries
@@ -246,8 +256,49 @@ def print_usage(parser):
     # Print usage, examples, sample queries, and current config
     # separated by a horizontal line delimiter
     divider = '\n%s\n' % ('-' * 90)
-    config = '\nCURRENT CONFIG:\n' + pformat(CONFIG_DATA)
-    log(divider.join([USAGE_TEXT, EXAMPLES, DSQUERY_COMMANDS, config]))
+    log(divider.join([USAGE_TEXT, EXAMPLES]))
+    
+    print_dsquery_commands()
+    
+    print_config()
+
+
+# IMPORTANT: This needs to be a separate function because the dsquery attributes are set
+# in the config file so this string must be generated dynamically rather than once at start up
+def print_dsquery_commands():
+    """
+    Returns a string containing the dsquery commands from which Parseltongue expects to receive output
+    """
+    computers = 'dsquery * -filter "(objectclass=computer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['COMPUTER'])
+    
+    users = 'dsquery * -filter "(&(objectclass=user)(!(objectclass=computer)))" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['USER'])
+    
+    groups = 'dsquery * -filter "(objectclass=group)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GROUP'])
+    
+    gpos = 'dsquery * -filter "(objectclass=grouppolicycontainer)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['GPO'])
+    
+    ous = 'dsquery * -filter "(objectclass=organizationalunit)" -attr %s -limit 0 -l' % ' '.join(CONFIG_DATA['INPUT']['DSQUERY_ATTRS']['OU'])
+    
+    template = """
+DSQUERY COMMANDS:
+
+    COMPUTERS:
+        {0}
+
+    USERS:
+        {1}
+
+    GROUPS:
+        {2}
+
+    OUs:
+        {3}
+
+    GPOs:
+        {4}
+    """
+    
+    log('%s\n%s' % ('-' * 90, template.format(computers, users, groups, ous, gpos)))
 
 
 def print_config():
@@ -522,7 +573,7 @@ def enhance_object(obj):
         name = obj['dnshostname'].split('.')[0]
     
     if name == '':
-        log('    [-] ERROR: Object contains no name field', 0)
+        log('    [-] WARNING: Object contains no name field', 2)
     
     # Standardize capitalization to ensure a proper look-up in the creds object
     name = name.lower()
@@ -883,9 +934,14 @@ def parse_cs_export(filepath, nt_domain):
                 cred['comment'] += '; %s' % src_host_info
             
             merge_creds(cred)
-    except ParseError:
+    except ParseError as e:
+        if filepath.lower().endswith('xml'):
+            log('        [-] ERROR: Filename indicates XML, but failed to parse XML; see error message below')
+            log('            %s' % e)
+            return
+        
         log('        [*] Auto-detected Cobalt Strike text export', 2)
-    
+        
         NTLM_PATT = re.compile('^(?P<realm>.*?)\\\\(?P<username>.*?):::(?P<ntlm>[a-fA-F0-9]{32}):::$')
         PLAIN_PATT = re.compile('^(?P<realm>.*)\\\\(?P<username>.*?) (?P<plaintext>.*)$')
         
@@ -1315,10 +1371,6 @@ def main():
     
     debug(args, 'Parsed arguments')
     
-    if args.show_dsqueries:
-        print(DSQUERY_COMMANDS)
-        sys.exit(0)
-    
     # Print usage info if run without args
     if len(sys.argv) == 1:
         print_usage(parser)
@@ -1364,9 +1416,13 @@ def main():
     if args.update_config:
         save_config(args.config_filepath)
     
+    if args.show_dsqueries:
+        print_dsquery_commands()
+        sys.exit(0)
+    
     # If no files specified, simply print the updated config and exit
     if len(args.filepaths) == 0:
-        log('[+] No files specified; printing config and exiting\n')
+        log('[*] No files specified; printing config and exiting\n')
         print_config()
         sys.exit(0)
     

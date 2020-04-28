@@ -9,15 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add configuration option to output a master credential file spanning all domains
 - Add a configuration option to specify the order of elements in the input filename (e.g., specify the data type before the date)
 
-### Fixed
-- Identifed a bug where ElementTree fails to parse files that contain fields with '&' in them; will look into other XML parsing libraries 
-
 
 ## [2.1.2]
 ## Changed
+- Modified how parse_cs_export() auto-detects the file format. Previously, it attempted to parse as XML and assumed it was text if parsing failed. Unfortunately, auto-detection (and therefore parsing) would fail if the parser encountered any error, such as an invalid token. Auto-detection now reads the first line of the file and compares it against the format of the XML export, a much more reliable check.
 - Added an 's' to dsquery_attrs config options for consistency (simplifies refactored code)
 
 ### Fixed
+- Added better support for Cobalt Strike XML export parsing, allowing it to handle files containing '&' (invalid XML characters)
 - Additional bug with loading dsquery attributes from config. The previous change fixed dsquery command output but failed to change the fieldnames in the CSV output; this is now fixed.
 - A bug where the logging output directory from the config file wasn't being applied
 

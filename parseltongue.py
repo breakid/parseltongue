@@ -843,133 +843,146 @@ def parse_cs_export(filepath, nt_domain):
         filepath: The path to a Cobalt Strike credential export file
         nt_domain: NT domain
     """
+    
+    # '&' isn't a valid XML character but Cobalt Strike includes it in the XML export anyway...
+    # So when parsing, we replace '&' with '&amp;', then remove it when retrieving
+    # the contents of each element
+    def get_text(entry, field):
+        text = entry.find(field).text
+        text = text.replace('&amp;', '&') if text else ''
+        
+        return text
+    
     log('    [*] Parsing Cobalt Strike credential export from: %s' % filepath)
     
-    # Attempt to parse the input file as XML; if it throws a 
-    # ParseError assume it is a text export
-    try:
-        tree = ElementTree.parse(filepath)
-        credentials = tree.getroot()
-        
+    with open(filepath, 'r') as in_file:
+        data = in_file.readlines()
+    
+    if '<credentials>' in data[0]:
         log('        [*] Auto-detected Cobalt Strike XML export', 2)
         
-        # Save the invalid domain handling option for convenient access
-        cs_export_settings = CONFIG_DATA['INPUT']['DATA']['CS_EXPORT']
-        
-        NTLM_PATT = re.compile('^[A-Fa-f0-9]{32}$')
-        
-        # Store user provided DNS to NT domain mapping for future use
-        dns_to_nt_map = {}
-        
-        for entry in credentials.iter('entry'):
-            # Convert entry back to XML for debugging
-            debug('    ' + ElementTree.tostring(entry).decode('utf-8').replace('\t', '    ').strip(), 'XML entry')
+        try:
+            # Replace invalid XML token '&' with the appropriate '&amp;'
+            # This will be undone later by get_text()
+            credentials = ElementTree.fromstring(''.join(data).replace('&', '&amp;'))
             
-            realm = entry.find('realm').text.upper()
+            # Save the CS export options for convenient access
+            cs_export_settings = CONFIG_DATA['INPUT']['DATA']['CS_EXPORT']
             
-            # Convert DNS domain to NT domain, if applicable and possible
-            if realm in dns_to_nt_map:
-                log('        [*] Replacing invalid realm %s with %s' % (realm, dns_to_nt_map[realm]), 2)
-                realm = dns_to_nt_map[realm]
+            NTLM_PATT = re.compile('^[A-Fa-f0-9]{32}$')
             
-            cred = {
-                'nt_domain': realm,
-                'username': entry.find('user').text,
-                'comment': entry.find('note').text if entry.find('note').text else ''
-            }
+            # Store user provided DNS to NT domain mapping for future use
+            dns_to_nt_map = {}
             
-            password = entry.find('password').text
-            
-            # Determine if the 'password' element is an NTLM hash or a plaintext password
-            if NTLM_PATT.match(password):
-                cred['ntlm'] = password.upper()
-            else:
-                # generate_ntlm() will store the plaintext in the ntlm_plaintext_map
-                # merge_creds() will add the plaintext, so no need to store it here
-                cred['ntlm'] = generate_ntlm(password)
-            
-            # IMPORTANT: Domain manipulation takes place after the password manipulation to ensure that any plaintext
-            # passwords encountered still make it into the ntlm_plaintext_map for cracking and wordlist output
-            
-            # Determine whether the realm is a DNS domain rather than an NT one
-            if '.' in cred['nt_domain']:
-                setting = cs_export_settings['INVALID_REALM']
+            for entry in credentials.iter('entry'):
+                # Convert entry back to XML for debugging
+                debug('    ' + ElementTree.tostring(entry).decode('utf-8').replace('\t', '    ').strip(), 'XML entry')
                 
-                if setting == 'replace':
-                    log('        [*] Replacing invalid realm %s with %s' % (realm, nt_domain), 2)
-                    cred['nt_domain'] = nt_domain
-                elif setting == 'prompt':
-                    while '.' in cred['nt_domain']:
-                        log('        [*] %s is not a valid NT domain' % cred['nt_domain'])
-                        cred['nt_domain'] = input('        [?] Please enter the NT domain that matches %s: ' % realm).upper()
+                realm = get_text(entry, 'realm').upper()
+                
+                # Convert DNS domain to NT domain, if applicable and possible
+                if realm in dns_to_nt_map:
+                    log('        [*] Replacing invalid realm %s with %s' % (realm, dns_to_nt_map[realm]), 2)
+                    realm = dns_to_nt_map[realm]
+                
+                cred = {
+                    'nt_domain': realm,
+                    'username': get_text(entry, 'user'),
+                    'comment': get_text(entry, 'note')
+                }
+                
+                password = get_text(entry, 'password')
+                
+                # Determine if the 'password' element is an NTLM hash or a plaintext password
+                if NTLM_PATT.match(password):
+                    cred['ntlm'] = password.upper()
+                else:
+                    # generate_ntlm() will store the plaintext in the ntlm_plaintext_map
+                    # merge_creds() will add the plaintext, so no need to store it here
+                    cred['ntlm'] = generate_ntlm(password)
+                
+                # IMPORTANT: Domain manipulation takes place after the password manipulation to ensure that any plaintext
+                # passwords encountered still make it into the ntlm_plaintext_map for cracking and wordlist output
+                
+                # Determine whether the realm is a DNS domain rather than an NT one
+                if '.' in cred['nt_domain']:
+                    setting = cs_export_settings['INVALID_REALM']
+                    
+                    if setting == 'replace':
+                        log('        [*] Replacing invalid realm %s with %s' % (realm, nt_domain), 2)
+                        cred['nt_domain'] = nt_domain
+                    elif setting == 'prompt':
+                        while '.' in cred['nt_domain']:
+                            log('        [*] %s is not a valid NT domain' % cred['nt_domain'])
+                            cred['nt_domain'] = input('        [?] Please enter the NT domain that matches %s: ' % realm).upper()
+                            
+                            # Reset to the original value if user did not provide input
+                            if cred['nt_domain'] == '':
+                                cred['nt_domain'] = realm
                         
-                        # Reset to the original value if user did not provide input
-                        if cred['nt_domain'] == '':
-                            cred['nt_domain'] = realm
+                        log('        [*] Replacing invalid realm %s with %s' % (realm, cred['nt_domain']), 2)
+                        
+                        # Add it to a map for future reference
+                        dns_to_nt_map[realm] = cred['nt_domain']
+                    elif 'warn' in setting:
+                        log('        [-] WARNING: %s is not a valid NT domain' % cred['nt_domain'])
                     
-                    log('        [*] Replacing invalid realm %s with %s' % (realm, cred['nt_domain']), 2)
-                    
-                    # Add it to a map for future reference
-                    dns_to_nt_map[realm] = cred['nt_domain']
-                elif 'warn' in setting:
-                    log('        [-] WARNING: %s is not a valid NT domain' % cred['nt_domain'])
+                    # If set to ignore, skip this entry and continue with the next
+                    if 'ignore' in setting:
+                        continue
                 
-                # If set to ignore, skip this entry and continue with the next
-                if 'ignore' in setting:
+                # Skip foreign realms (i.e., ones that do not match the NT domain 
+                # specified in the filename) if configured to do so
+                if cred['nt_domain'] != nt_domain and cs_export_settings['FOREIGN_DOMAIN'] == 'ignore':
                     continue
-            
-            # Skip foreign realms (i.e., ones that do not match the NT domain 
-            # specified in the filename) if configured to do so
-            if cred['nt_domain'] != nt_domain and cs_export_settings['FOREIGN_DOMAIN'] == 'ignore':
-                continue
-            
-            # Optionally save the source and host information in the comment
-            source = entry.find('source').text
-            host = entry.find('host').text
-            src_host_info = source if host is None else '%s on %s' % (source, host)
-            
-            if cred['comment'] == '' and cs_export_settings['POPULATE_COMMENT'] in ['append', 'empty_only']:
-                cred['comment'] = src_host_info
-            elif cred['comment'] != '' and cs_export_settings['POPULATE_COMMENT'] == 'append':
-                cred['comment'] += '; %s' % src_host_info
-            
-            merge_creds(cred)
-    except ParseError as e:
-        if filepath.lower().endswith('xml'):
-            log('        [-] ERROR: Filename indicates XML, but failed to parse XML; see error message below')
+                
+                # Optionally save the source and host information in the comment
+                source = get_text(entry, 'source')
+                host = get_text(entry, 'host')
+                src_host_info = source if host is None else '%s on %s' % (source, host)
+                
+                if cred['comment'] == '' and cs_export_settings['POPULATE_COMMENT'] in ['append', 'empty_only']:
+                    cred['comment'] = src_host_info
+                elif cred['comment'] != '' and cs_export_settings['POPULATE_COMMENT'] == 'append':
+                    cred['comment'] += '; %s' % src_host_info
+                
+                merge_creds(cred)
+        except ParseError as e:
+            log('        [-] ERROR: Failed to parse XML file; see error message below')
             log('            %s' % e)
             return
-        
+    else:
         log('        [*] Auto-detected Cobalt Strike text export', 2)
         
+        # IMPORTANT: This code will not reliably handle plaintext passwords if the username 
+        # has a space because text export is space delimited
         NTLM_PATT = re.compile('^(?P<realm>.*?)\\\\(?P<username>.*?):::(?P<ntlm>[a-fA-F0-9]{32}):::$')
         PLAIN_PATT = re.compile('^(?P<realm>.*)\\\\(?P<username>.*?) (?P<plaintext>.*)$')
         
-        with open(filepath, 'r') as in_file:
-            for line in in_file.readlines():
-                line = line.strip()
+        for line in data:
+            line = line.strip()
+            
+            data = NTLM_PATT.search(line)
+            
+            if data is not None:
+                data = data.groupdict()
+                realm = data['realm']
+                username = data['username'].lower()
+                ntlm = data['ntlm'].upper()
                 
-                data = NTLM_PATT.search(line)
+                if realm == nt_domain:
+                    merge_creds({'nt_domain': nt_domain, 'username': username, 'ntlm': ntlm, 'comment': 'cs_export'})
+            else:
+                data = PLAIN_PATT.search(line)
                 
                 if data is not None:
                     data = data.groupdict()
                     realm = data['realm']
                     username = data['username'].lower()
-                    ntlm = data['ntlm'].upper()
+                    plaintext = data['plaintext']
                     
                     if realm == nt_domain:
-                        merge_creds({'nt_domain': nt_domain, 'username': username, 'ntlm': ntlm, 'comment': 'cs_export'})
-                else:
-                    data = PLAIN_PATT.search(line)
-                    
-                    if data is not None:
-                        data = data.groupdict()
-                        realm = data['realm']
-                        username = data['username'].lower()
-                        plaintext = data['plaintext']
-                        
-                        if realm == nt_domain:
-                            merge_creds({'nt_domain': nt_domain, 'username': username, 'ntlm': generate_ntlm(plaintext), 'plaintext': plaintext, 'comment': 'cs_export'})
+                        merge_creds({'nt_domain': nt_domain, 'username': username, 'ntlm': generate_ntlm(plaintext), 'plaintext': plaintext, 'comment': 'cs_export'})
 
 
 def parse_dcsync(filepath, nt_domain):

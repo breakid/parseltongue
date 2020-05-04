@@ -8,7 +8,7 @@
 			<note></note>
 	</entry>
 	<entry>
-			<user>daniel.jackson</user>
+			<user>Daniel.Jackson</user>
 			<password>I'mNotDeadYet1!</password>
 			<realm>SGC</realm>
 			<source>manual</source>
@@ -16,7 +16,7 @@
 			<note></note>
 	</entry>
 	<entry>
-			<user>george.hammond</user>
+			<user>George.Hammond</user>
 			<password>2bce5d45553403e01773fec76016cfa2</password>
 			<realm>SGC</realm>
 			<source>hashdump</source>

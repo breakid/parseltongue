@@ -98,7 +98,7 @@ CREDENTIAL_TYPES = ['cs_export', 'dcsync', 'hashdump', 'logonpasswords', 'lsadum
 
 FILE_TYPES = sorted(list(FILE_TYPE_MAP.keys()) + CREDENTIAL_TYPES)
 
-VERSION = '2.1.3'
+VERSION = '2.1.4'
 
 BANNER_SM = """
 ======================================================================= 
@@ -887,7 +887,7 @@ def parse_cs_export(filepath, nt_domain):
                 
                 cred = {
                     'nt_domain': realm,
-                    'username': get_text(entry, 'user'),
+                    'username': get_text(entry, 'user').lower(),
                     'comment': get_text(entry, 'note')
                 }
                 
@@ -939,7 +939,7 @@ def parse_cs_export(filepath, nt_domain):
                 # Optionally save the source and host information in the comment
                 source = get_text(entry, 'source')
                 host = get_text(entry, 'host')
-                src_host_info = source if host is None else '%s on %s' % (source, host)
+                src_host_info = source if host is '' else '%s on %s' % (source, host)
                 
                 if cred['comment'] == '' and cs_export_settings['POPULATE_COMMENT'] in ['append', 'empty_only']:
                     cred['comment'] = src_host_info
